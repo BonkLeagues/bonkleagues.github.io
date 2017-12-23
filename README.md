@@ -1,37 +1,14 @@
-## Welcome to GitHub Pages
+---
+layout: default
+---
 
-You can use the [editor on GitHub](https://github.com/BonkLeagues/bonkleagues.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Bonk Leagues the modified and improved http://bonk.io/ edit.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# [](#header-1)How to use the bonk leagues client.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/BonkLeagues/bonkleagues.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+To use the bonk leagues client:
+1. Download the zip file
+2. Extract the SWF and HTML file to the same directory
+3. If on chrome visit [the flash security page](www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html)
+4. Press on edit locations, then add location; do not click select file or folder, instead enter the directory of the file, it can be easily found by doing [this](https://i.imgur.com/b5h8QlE.png)
+5. Run bonk-leagues.html and enjoy.
