@@ -38,31 +38,22 @@ function instructions(){
             break;
         case 3:
             $('#insthead').text('Instructions - Step 3/4');
-            $('#steptxt1').html('3. In the text box below \'Trust this location:\', paste the following text:');
-            $('#steptxt2').html('https://bonkleagues.github.io/swf/latest.swf<br/><br/><img src="https://i.imgur.com/ql8sdDI.png">');
+            $('#steptxt1').html('3. In the text box below \'Trust this location:\', you need to write the following text (depending on your computer type):');
+            $('#steptxt2').html('For Windows, put this in the box: C:\\<br/>For Chromebooks, put this in the box: file:///home/<br/><br/><img src="https://i.imgur.com/ql8sdDI.png">');
             $('#button').text('Next Step');
             break;
         case 4:
             $('#insthead').text('Instructions - Step 4/4');
             $('#steptxt1').html('4. Now, simply just press the \'Confirm\' button on the other page!');
-            $('#steptxt2').html('Once you have done that, you are now ready to play Bonk Leagues!<br/><br/><img src="https://i.imgur.com/UiwVKbR.png">');
-            $('#button').text('⇒ Play! ⇐');
+            $('#steptxt2').html('Once you have done that, you are now ready to download Bonk Leagues!<br/><br/><img src="https://i.imgur.com/UiwVKbR.png">');
+            $('#button').text('Download!');
             break;
         case 5:
-            $('#instructions').slideUp();
-            $('#game').slideDown();
-            $('#button').text('Fullscreen');
-            $('#instskip').hide();
-            break;
-        case 6:
-            $('header').css({position: 'absolute', top: '0px', left: '0px'});
-            $('#instructions,#instskip,header br,header h1,header nav').hide();
-            $('#button').slideUp();
-            $('#gamecont').css({width:'100%', height:'100%', border: '0', position: 'absolute', top: '0px', left: '0px'});
-            $('#gamecont').css('box-shadow','0');
-            $('body').css('overflow','hidden')
-            $('header img').css({margin:'0'});
-            $('header').css({width:'130px', padding:'30px 0'});
+            window.open('release/Bonk_Leagues.zip');
+            $('#insthead').text('Thank you for downloading Bonk Leagues');
+            $('#steptxt1').html('To play it, you need to unzip the downloaded ZIP file, and run \'Bonk Leagues Client.html\'');
+            $('#steptxt2').html('Make sure that \'Bonk Leagues Client.html\' is in the same folder as the \'Bonk Client.swf\' file!');
+            $('#button').hide();
             break;
     }
     step++;
