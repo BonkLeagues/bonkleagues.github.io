@@ -39,7 +39,7 @@ function instructions(){
         case 3:
             $('#insthead').text('Instructions - Step 3/4');
             $('#steptxt1').html('3. In the text box below \'Trust this location:\', you need to write the following text (depending on your computer type):');
-            $('#steptxt2').html('For Windows, put this in the box: C:\\<br/>For Chromebooks, put this in the box: file:///home/<br/><br/><img src="https://i.imgur.com/ql8sdDI.png">');
+            $('#steptxt2').html('For Windows, put this in the box: C:\\<br/>For Chromebooks, put this in the box: file:///home/<br/><br/><img src="https://i.imgur.com/0tZUfvQ.png">');
             $('#button').text('Next Step');
             break;
         case 4:
