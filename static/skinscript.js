@@ -34,7 +34,7 @@ function escapeHtml(unsafe) {
 function refreshStuff(){
     $.ajax({
         type: "POST",
-        url: "http://sebweb.co.uk/blbackend/cors/physics/scripts/account5.php",
+        url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account5.php",
         dataType: "text",
         data: {
             task: 1,
