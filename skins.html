@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Bonk Leagues Skin Manager</title>
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta property="og:title" content="Bonk Leagues Skin Manager" />
+        <meta property="og:locale" content="en" />
+        <meta name="description" content="Save, load, manage and share unlimited amounts of skins for bonk.io." />
+        <meta property="og:description" content="Save, load, manage and share unlimited amounts of skins for bonk.io." />
+        <link rel="canonical" href="https://bonkleagues.github.io/skins.html" />
+        <meta property="og:url" content="https://bonkleagues.github.io/skins.html" />
+        <meta property="og:site_name" content="Bonk Leagues Skin Manager" />
+        <meta property="og:image" content="https://bonkleagues.github.io/static/logo.png" />
+        <meta name="theme-color" content="#013e79">
+
+        <link rel="icon" type="image/png" href="static/logo.png">
+        <link rel='stylesheet' type='text/css' href='static/skinstyle.css'>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" id="defaulta">
+                <img src="static/logo.png" id="logo" draggable="false">
+                <h1>Skin Manager<span id="typing">_</span></h1>
+            </a>
+            <br/>
+            <nav>
+                <a href="index.html">Home</a>
+                <a class="sel" href="skins.html">Skin Manager</a>
+                <a href="https://discord.gg/A5zpj2a" target="_blank">Discord</a>
+            </nav>
+        </header>
+        <section>
+            <div id="loggedin">
+                <h1>WELCOME, <span class="s-name">X</span>!</h1><br/><br/>
+                <span class="parthead">My Skins</span></br><br/>
+                <p id="txt-skin1" style="display:none">You have no saved skins yet. You can use the plus button to add one!<br/><br/>We recommend adding your current skin first.</p>
+                <div class="skincont" style="display:inline-block"></div><div class="skinslot" data-skin="addskin"><span>+</span></div>
+                <br/>
+                <a class="button" style="font-size:24px;padding:5px 10px;animation:none;" onclick="window.location.reload(true)">Logout</a>
+                <br/><br/>
+                <p style="font-style:italic;font-size:12px;display:none" class="txt-skin2">Info: click a skin slot above to edit it, apply it, or get its skin code.<br/><br/>-</p>
+                <p style="font-weight:bold;font-size:12px;display:none" class="txt-skin2">
+                    Important: Bonk Leagues Skin Manager uses localstorage to save skins, <br/>
+                    meaning skins are saved only in this browser, NOT YOUR BONK ACCOUNT!<br/><br/>
+                    <span style="font-weight:400;font-style:italic">Make sure to backup your skin codes if you are switching computers!</span>
+                </p>
+                <br/>
+            </div>
+
+            <div id="addskin">
+                <span class="parthead">Add skin from...</span></br><br/>
+                <div class="skinchoice" data-choice="1">
+                    <img src="static/icon2.png" width="64">
+                    <div>
+                        <b>My current skin</b><br/>
+                        Adds your current skin from bonk.io
+                    </div>
+                </div>
+                <div class="skinchoice" data-choice="2">
+                    <img src="static/icon1.png" width="64">
+                    <div>
+                        <b>Enter skin code</b><br/>
+                        Adds a skin from its unique skin code
+                    </div>
+                </div>
+                <div class="skinchoice" data-choice="3">
+                    <img src="static/icon3.png" width="64">
+                    <div>
+                        <b>Sample skins</b><br/>
+                        Pick from a selection of premade skins
+                    </div>
+                </div>
+                <br/>
+                <a class="button cancel" data-cancel="addskin" style="font-size:24px;padding:5px 10px;">Cancel</a>
+            </div>
+
+            <div id="addskin2">
+                <span class="parthead">Adding skin</span></br><br/>
+                <b>What would you like to name this skin?</b><br/><br/>
+                <input type="text" id="skn" maxlength="30" size="30" value="Skin"><br/>
+                <a id="svskin" class="button" style="font-size:24px;padding:5px 10px;margin-right:15px">Save Skin!</a><a class="button cancel" data-cancel="addskin2" style="font-size:24px;padding:5px 10px;">Cancel</a><br/><br/>
+                <p style="font-style:italic;font-size:12px">Tip: Once this skin is added, click on it and press 'Apply skin' to use it on bonk.io</p>
+            </div>
+
+            <div id="editskin">
+                <span class="parthead">Editing skin</span></br><br/>
+                Skin name: <input type="text" id="skne" maxlength="30" size="30"><br/><br/>
+                <a id="skncode" class="button" style="font-size:24px;padding:5px 10px;animation:none;">Get Skin Code</a>
+                <a id="aplskin" class="button" style="font-size:24px;padding:5px 10px;animation:none;">Apply skin on Bonk.io</a>
+                <br/><br/>
+                <a id="edskin" class="button" style="font-size:24px;padding:5px 10px;margin-right:30px;animation:none;">Done</a><a id="delskin" class="button" style="font-size:24px;padding:5px 10px;margin-left:-10px;animation:none;">Delete Skin</a><br/><br/>
+                <p style="font-style:italic;font-size:12px">Tip: You can share your skin code (press 'get skin code' button to do this!) with a friend and<br/>then they will be able to use your skin in the Skin Manager too! :)</p>
+            </div>
+
+            <div id="instructions">
+                <span class="parthead" id="insthead">Login</span><br/><br/>
+                <input type="text" id="un" maxlength="15" size="30" placeholder="Bonk.io username"><br/>
+                <input type="password" id="pw" maxlength="64" size="30" placeholder="Bonk.io password"><br/>
+                <p id="errtxt" style="font-style:italic;font-size:12px">Note: All requests are sent through bonk.io's servers (using a CORS proxy), and accessed client side with AJAX. Basically, <b>WE CANNOT SEE YOUR LOGIN DETAILS!</b></p>
+                <br/>
+            </div>
+            <a id="button" class="button">Login with Bonk.io</a>
+            <br/><br/><br/><br/>
+            <div id="info">
+                <span class="parthead">Info</span></br>
+                <p style="font-weight:bold;">Welcome to the Bonk Leagues Skin Manager! To start, log in above.</p>
+                <p>Here you can save, load, manage and share unlimited amounts of skins for bonk.io.</p>
+                <p>You can also store multiple skins and transfer them accross accounts!</p>
+                <br/><br/>
+                <span class="parthead">Feedback</span></br>
+                <p>The Bonk Leagues Skin Manager is still not <b>fully</b> complete, and may be buggy at the moment.</p>
+                <p>If you encounter a bug, or want to give feedback, message @Finbae#2180 in the <a href="https://discord.gg/5SB5fYm" target="_blank">M4K Bonk.io Discord Server</a></p>
+                <p>Also, we are looking for any good skin makers to make some skins for the upcoming sample skins page (you will be credited!)</p>
+            </div>
+
+            <!--
+               ALSO DO STUFF FINAL TOUCHES
+            -->
+
+            <span style="position:fixed;bottom:15px;right:15px;font-size:16px;z-index:998;">website by Finbae<span style="font-size:11px;color:#666;">#2180</span></span>
+        </section>
+
+
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="static/md5.js"></script>
+        <script src="static/skinscript.js"></script>
+    </body>
+</html>

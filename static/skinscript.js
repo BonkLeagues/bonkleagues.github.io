@@ -34,7 +34,7 @@ function escapeHtml(unsafe) {
 function refreshStuff(){
     $.ajax({
         type: "POST",
-        url: "cors/physics/scripts/account5.php",
+        url: "http://sebweb.co.uk/blbackend/cors/physics/scripts/account5.php",
         dataType: "text",
         data: {
             task: 1,
@@ -111,7 +111,7 @@ $('#aplskin').click(function(){
     if(confirm("Are you sure you want to apply and upload this skin to bonk.io? (This will replace your active bonk.io skin, so make sure you've saved it first!)")){
         $.ajax({
             type: "POST",
-            url: "cors/physics/scripts/account5.php",
+            url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account5.php",
             dataType: "text",
             data: {
                 task: 4,
@@ -181,7 +181,7 @@ $('#button').click(function(){
             $('#button').text('Please wait...');
             $.ajax({
                 type: "POST",
-                url: "cors/physics/scripts/account5.php",
+                url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account5.php",
                 dataType: "text",
                 data: {
                     task: 1,
