@@ -1,6 +1,9 @@
 var step = 0;
-var stuff, skinchoice, skntoUse, skni;
+var stuff, skinchoice, skntoUse, skni, data;
 var skindata = [];
+var pgnum = 1;
+
+$.ajaxSetup({ cache: false });
 
 function errout(txt){
     $('#errtxt').text(txt);
@@ -29,7 +32,19 @@ function escapeHtml(unsafe) {
          .replace(/>/g, "&gt;")
          .replace(/"/g, "&quot;")
          .replace(/'/g, "&#039;");
- }
+}
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
 
 function refreshStuff(){
     $.ajax({
@@ -71,6 +86,53 @@ function refreshSkins(){
         $('#txt-skin1').show();
     }
 }
+
+function getSamples(page){
+    $('.pg').removeClass('disabled')
+    $('#smpskincont').html('');
+    $.getJSON("static/sample-skins.json", function(res) {
+        if(data == null){ data = shuffle(res); }
+        console.log(data);
+        var totpages = Math.ceil(data.length / 8);
+
+        if(page > totpages){page = totpages;}
+        if(page < 1){page = 1;}
+
+        pgnum = page;
+
+        if(page == 1){$('#pgprev').addClass('disabled');}
+        if(page == totpages){$('#pgnext').addClass('disabled');}
+        $('#pgid').text(page+'/'+totpages);
+
+        $.each(data.slice(8 * (page - 1), 8 * page), function(i, smskin){
+            $('#smpskincont').append(`<div class="sampleskin" data-smskin="${i}"><iframe class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode=${encodeURIComponent(smskin.avatar)}"></iframe><div><b>${smskin.name}</b><br/><i>by <b>${smskin.by}</b></i></div></div>`);
+        });
+    });
+}
+
+$('#pgnext').click(function(){
+    if(!$(this).hasClass('disabled')){
+        $('.pg').addClass('disabled');
+        pgnum++;
+        getSamples(pgnum);
+    }
+});
+
+$('#pgprev').click(function(){
+    if(!$(this).hasClass('disabled')){
+        $('.pg').addClass('disabled');
+        pgnum--;
+        getSamples(pgnum);
+    }
+});
+
+$(document).on("click",".sampleskin",function() {
+    skinchoice = data[parseInt($(this).data('smskin'))].avatar;
+    $('#smpskins').slideUp();
+    $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode='+encodeURIComponent(skinchoice));
+    $('#skn').val(data[parseInt($(this).data('smskin'))].name);
+    $('#addskin2').slideDown();
+});
 
 $(document).on("click",".skinslot",function() {
     if($(this).data('skin') == 'addskin'){
@@ -147,8 +209,10 @@ $('.skinchoice').click(function(){
             $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode='+encodeURIComponent(skinchoice));
             $('#addskin2').slideDown();
         }
-    } else {
-        alert('The "Sample skins" feature is coming soon™. If you are a good skin maker, message @Finbae#2180 on the M4K Bonk.io Discord Server for a chance to have one of your skins here (with credit)');
+    } else if($(this).data('choice') == '3'){
+        $('#addskin').slideUp();
+        $('#smpskins').slideDown();
+        setTimeout(function(){getSamples(1)}, 500);
     }
 });
 

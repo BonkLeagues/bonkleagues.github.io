@@ -16,7 +16,7 @@
         <meta name="theme-color" content="#013e79">
 
         <link rel="icon" type="image/png" href="static/logo.png">
-        <link rel='stylesheet' type='text/css' href='static/skinstyle.css#v2'>
+        <link rel='stylesheet' type='text/css' href='static/skinstyle.css#v3'>
     </head>
     <body>
         <header>
@@ -76,6 +76,16 @@
                 <a class="button cancel" data-cancel="addskin" style="font-size:24px;padding:5px 10px;">Cancel</a>
             </div>
 
+            <div id="smpskins">
+                <span class="parthead">Sample Skins</span><br/><br/>
+                <div id="smpskincont">loading...</div>
+                <br/>
+                <a class="button pg" id="pgprev" style="font-size:24px;padding:5px 10px;animation:none;margin-right:20px;">&lt; Prev</a><b>Page <span id="pgid">x/x</span></b><a class="button pg" id="pgnext" style="font-size:24px;padding:5px 10px;animation:none;margin-left:20px;">Next &gt;</a>
+                <br/><br/>
+                <a class="button cancel" data-cancel="smpskins" style="font-size:24px;padding:5px 10px;animation:none;margin-left:-5px;">Cancel</a><br/><br/>
+                <p style="font-style:italic;font-size:12px">Note: If you want your skin featured here for people to use, feel free to message the skin code to @Finbae#2180 on Discord!</p>
+            </div>
+
             <div id="addskin2">
                 <span class="parthead">Adding skin</span><br/><br/>
                 <iframe id="sknframe2" class="sknframe"></iframe><br/><br/>
@@ -129,6 +139,6 @@
 
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script src="static/md5.js"></script>
-        <script src="static/skinscript.js#v2"></script>
+        <script src="static/skinscript.js#v3"></script>
     </body>
 </html>

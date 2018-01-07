@@ -153,7 +153,7 @@ input[type=text],input[type=password]{
     margin-bottom:20px;
     border:0px;
 }
-#loggedin, #addskin, #addskin2, #editskin{
+#loggedin, #addskin, #addskin2, #editskin, #smpskins{
     display:none;
 }
 .skinslot{
@@ -197,7 +197,7 @@ input[type=text],input[type=password]{
     margin-left:15px;
     vertical-align:middle;
 }
-.skinchoice:hover{
+.skinchoice:hover,.sampleskin:hover{
     background:#141414;
 }
 .sknframe{
@@ -206,4 +206,23 @@ input[type=text],input[type=password]{
     height:100px;
     border-radius:360px;
     box-shadow:5px 5px 0px 0px #b30050;
+}
+.sampleskin{
+    width:230px;
+    display:inline-block;
+    padding-bottom:15px;
+    border-left:1px solid #444;
+    padding-top:15px;
+    border-right:1px solid #444;
+    cursor:pointer;
+    margin-bottom:10px;
+    margin-left:-1px;
+}
+.sampleskin iframe{
+    margin-bottom:5px;
+}
+.disabled{
+    cursor:not-allowed;
+    box-shadow:none;
+    background:#b30050;
 }
