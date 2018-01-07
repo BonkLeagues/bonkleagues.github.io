@@ -200,3 +200,10 @@ input[type=text],input[type=password]{
 .skinchoice:hover{
     background:#141414;
 }
+.sknframe{
+    border:2px solid #fb016e;
+    width:100px;
+    height:100px;
+    border-radius:360px;
+    box-shadow:5px 5px 0px 0px #b30050;
+}

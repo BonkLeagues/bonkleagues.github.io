@@ -47,6 +47,7 @@ function refreshStuff(){
             console.log(stuff);
         }
         skinchoice = getQueryVariable('avatar1',stuff);
+        $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode='+encodeURIComponent(skinchoice));
     });
 }
 
@@ -79,6 +80,7 @@ $(document).on("click",".skinslot",function() {
         skni = parseInt($(this).data('skin'));
         skntoUse = skindata[skni];
         $('#skne').val(skntoUse.name);
+        $('#sknframe').attr('src','https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode='+encodeURIComponent(skntoUse.avatar));
 
         $('#loggedin').slideUp();
         $('#editskin').slideDown();
@@ -142,10 +144,11 @@ $('.skinchoice').click(function(){
         if(tmpv != null){
             skinchoice = tmpv;
             $('#addskin').slideUp();
+            $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode='+encodeURIComponent(skinchoice));
             $('#addskin2').slideDown();
         }
     } else {
-        alert('This feature is coming soon™. If you are a good skin maker, message @Finbae#2180 on the M4K Bonk.io Discord Server for a chance to have one of your skins here (with credit)');
+        alert('The "Sample skins" feature is coming soon™. If you are a good skin maker, message @Finbae#2180 on the M4K Bonk.io Discord Server for a chance to have one of your skins here (with credit)');
     }
 });
 
