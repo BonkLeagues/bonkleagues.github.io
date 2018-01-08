@@ -79,7 +79,7 @@ function refreshSkins(){
         $('.txt-skin2').show();
         $.each(skindata, function(index, item) {
             console.log(item);
-            $('.skincont').append(`<div class="skinslot" data-skin="${index}"><span>${item.name}</span></div>`);
+            $('.skincont').append(`<div class="skinslot" data-skin="${index}"><iframe class="sknframe" style="width:48px;height:48px;display:inline-block;vertical-align:middle;box-shadow:none;margin:0px 15px;border: 3px #8e0241 solid;"src="https://bonkleaguebot.herokuapp.com/avatar?size=48&skinCode=${encodeURIComponent(item.avatar)}"></iframe><span>${item.name}</span></div>`);
         });
     } else {
         $('.txt-skin2').hide();
