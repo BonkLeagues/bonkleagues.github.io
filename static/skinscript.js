@@ -62,7 +62,7 @@ function refreshStuff(){
             console.log(stuff);
         }
         skinchoice = getQueryVariable('avatar1',stuff);
-        $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode='+encodeURIComponent(skinchoice));
+        $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skinchoice));
     });
 }
 
@@ -79,7 +79,7 @@ function refreshSkins(){
         $('.txt-skin2').show();
         $.each(skindata, function(index, item) {
             console.log(item);
-            $('.skincont').append(`<div class="skinslot" data-skin="${index}"><iframe class="sknframe" style="width:48px;height:48px;display:inline-block;vertical-align:middle;box-shadow:none;margin:0px 15px;border: 3px #8e0241 solid;"src="https://bonkleaguebot.herokuapp.com/avatar?size=48&skinCode=${encodeURIComponent(item.avatar)}"></iframe><span>${item.name}</span></div>`);
+            $('.skincont').append(`<div class="skinslot" data-skin="${index}"><img class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=${encodeURIComponent(item.avatar)}" type="image/svg+xml" style="width:48px;height:48px;display:inline-block;vertical-align:middle;box-shadow:none;margin:0px 15px;border: 3px #8e0241 solid;"><span>${item.name}</span></div>`);
         });
     } else {
         $('.txt-skin2').hide();
@@ -105,7 +105,7 @@ function getSamples(page){
         $('#pgid').text(page+'/'+totpages);
 
         $.each(data.slice(8 * (page - 1), 8 * page), function(i, smskin){
-            $('#smpskincont').append(`<div class="sampleskin" data-smskin="${i}"><iframe class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode=${encodeURIComponent(smskin.avatar)}"></iframe><div><b>${smskin.name}</b><br/><i>by <b>${smskin.by}</b></i></div></div>`);
+            $('#smpskincont').append(`<div class="sampleskin" data-smskin="${i + 8 * (page - 1)}"><img class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=${encodeURIComponent(smskin.avatar)}"><div><b>${smskin.name}</b><br/><i>by <b>${smskin.by}</b></i></div></div>`);
         });
     });
 }
@@ -129,7 +129,7 @@ $('#pgprev').click(function(){
 $(document).on("click",".sampleskin",function() {
     skinchoice = data[parseInt($(this).data('smskin'))].avatar;
     $('#smpskins').slideUp();
-    $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode='+encodeURIComponent(skinchoice));
+    $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skinchoice));
     $('#skn').val(data[parseInt($(this).data('smskin'))].name);
     $('#addskin2').slideDown();
 });
@@ -142,7 +142,7 @@ $(document).on("click",".skinslot",function() {
         skni = parseInt($(this).data('skin'));
         skntoUse = skindata[skni];
         $('#skne').val(skntoUse.name);
-        $('#sknframe').attr('src','https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode='+encodeURIComponent(skntoUse.avatar));
+        $('#sknframe').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skntoUse.avatar));
 
         $('#loggedin').slideUp();
         $('#editskin').slideDown();
@@ -206,7 +206,7 @@ $('.skinchoice').click(function(){
         if(tmpv != null){
             skinchoice = tmpv;
             $('#addskin').slideUp();
-            $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar?size=100&skinCode='+encodeURIComponent(skinchoice));
+            $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skinchoice));
             $('#addskin2').slideDown();
         }
     } else if($(this).data('choice') == '3'){
