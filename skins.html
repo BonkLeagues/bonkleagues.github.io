@@ -16,7 +16,7 @@
         <meta name="theme-color" content="#013e79">
 
         <link rel="icon" type="image/png" href="static/logo.png">
-        <link rel='stylesheet' type='text/css' href='static/skinstyle.css#v6'>
+        <link rel='stylesheet' type='text/css' href='static/skinstyle.css#v7'>
 
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
@@ -25,18 +25,32 @@
             enable_page_level_ads: true
           });
         </script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112446948-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-112446948-1');
+        </script>
     </head>
     <body>
         <header>
             <a href="index.html" id="defaulta">
                 <img src="static/logo.png" id="logo" draggable="false">
-                <h1>Skin Manager<span id="typing">_</span></h1>
+                <h1>Skin Manager<span id="typing">_</span><span style="font-size:18px;vertical-align:top">v2.1</span></h1>
             </a>
             <br/>
             <nav>
                 <a href="index.html">Home</a>
+                <a href="client.html">Client</a>
                 <a class="sel" href="skins.html">Skin Manager</a>
+                <span id="more">More &#9660;<div class="moredd"><a href="quickplay.html">Quick Play Map Checker</a></div></span>
+                <!--
                 <a href="https://discord.gg/A5zpj2a" target="_blank">Discord</a>
+                -->
             </nav>
         </header>
         <section>
@@ -59,6 +73,13 @@
 
             <div id="addskin">
                 <span class="parthead">Add skin from...</span><br/><br/>
+                <div class="skinchoice" data-choice="4">
+                    <img src="static/icon4.png" width="64">
+                    <div>
+                        <b>Use the Bonk Leagues Skin Editor <span style="color:#fb016e">NEW!</span></b><br/>
+                        Create a skin with our new built-in editor
+                    </div>
+                </div>
                 <div class="skinchoice" data-choice="1">
                     <img src="static/icon2.png" width="64">
                     <div>
@@ -82,6 +103,12 @@
                 </div>
                 <br/>
                 <a class="button cancel" data-cancel="addskin" style="font-size:24px;padding:5px 10px;">Cancel</a>
+            </div>
+
+            <div id="bleditor" style="display:none">
+                <span class="parthead">Bonk Leagues Skin Editor</span><br/><br/>
+                <canvas id="canvas" draggable="false"></canvas>
+                
             </div>
 
             <div id="smpskins">
@@ -146,6 +173,7 @@
 
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script src="static/md5.js"></script>
-        <script src="static/skinscript.js#v6"></script>
+        <script src="static/skineditor.js#v1"></script>
+        <script src="static/skinscript.js#v7"></script>
     </body>
 </html>

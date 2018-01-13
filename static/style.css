@@ -47,7 +47,7 @@ header h1{
         visibility: hidden;
     }
 }
-nav a{
+nav a, #more{
     color:#fb016e;
     text-decoration:none;
     font-size:26px;
@@ -56,7 +56,7 @@ nav a{
     transition:all 0.1s;
     cursor:pointer;
 }
-nav a:hover{
+nav a:hover, #more:hover{
     background:#fb016e;
     color:#013e79;
 }
@@ -125,4 +125,72 @@ ul li{
 #gamecont{
     border:3px solid #fb016e;
     z-index:997;
+}
+.homethumb{
+    transition:.5s all;
+    box-shadow:5px 5px 0px 0px #00182e;
+    cursor:pointer;
+    margin-right:10px;
+}
+.homethumb:hover{
+    transform: scale(1.02);
+    box-shadow:10px 10px 0px 0px #00182e;
+}
+.testimonial{
+    border:2px solid #fb016e;
+    color: #fb016e;
+    padding:30px;
+    width:400px;
+    margin-bottom:10px;
+    display:inline-block;
+    box-shadow:3px 3px 0px 0px #b30050;
+    vertical-align:middle;
+}
+hr{
+    border:1px solid #222;
+    width:50%;
+}
+.sampleskin{
+    width:230px;
+    display:inline-block;
+    padding-bottom:15px;
+    border-left:1px solid #444;
+    padding-top:15px;
+    border-right:1px solid #444;
+    margin-bottom:10px;
+    margin-left:-1px;
+}
+.sampleskin img{
+    margin-bottom:10px;
+    border:2px solid #fb016e;
+    border-radius:360px;
+    box-shadow:5px 5px 0px 0px #b30050;
+    width:100px;
+    height:100px;
+}
+.moredd {
+    display:none;
+    position:absolute;
+    background-color: #fb016e;
+    min-width: 290px;
+    box-shadow:5px 5px 0px 0px #b30050;
+    z-index: 1;
+    margin-left:-10px;
+    margin-top:3px;
+}
+#more{
+    position:relative;
+    display:inline-block;
+}
+#more:hover .moredd {
+    display:block;
+}
+.moredd a{
+    color:#013e79;
+    line-height:50px;
+    padding:5px 10px;
+}
+.moredd a:hover{
+    background-color: #013e79;
+    color:#fb016e;
 }

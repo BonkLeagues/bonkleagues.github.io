@@ -53,7 +53,7 @@ header h1{
         visibility: hidden;
     }
 }
-nav a{
+nav a, #more{
     color:#fb016e;
     text-decoration:none;
     font-size:26px;
@@ -62,7 +62,7 @@ nav a{
     transition:all 0.1s;
     cursor:pointer;
 }
-nav a:hover{
+nav a:hover, #more:hover{
     background:#fb016e;
     color:#013e79;
 }
@@ -224,4 +224,36 @@ input[type=text],input[type=password]{
     cursor:not-allowed;
     box-shadow:none;
     background:#b30050;
+}
+#canvas{
+    border-radius:360px;
+    border:3px solid #fb016e;
+    box-shadow:7px 7px 0px 0px #b30050;
+    background:#fff;
+}
+.moredd {
+    display:none;
+    position:absolute;
+    background-color: #fb016e;
+    min-width: 290px;
+    box-shadow:5px 5px 0px 0px #b30050;
+    z-index: 1;
+    margin-left:-10px;
+    margin-top:3px;
+}
+#more{
+    position:relative;
+    display:inline-block;
+}
+#more:hover .moredd {
+    display:block;
+}
+.moredd a{
+    color:#013e79;
+    line-height:50px;
+    padding:5px 10px;
+}
+.moredd a:hover{
+    background-color: #013e79;
+    color:#fb016e;
 }

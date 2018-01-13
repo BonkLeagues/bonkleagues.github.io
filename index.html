@@ -7,8 +7,8 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <meta property="og:title" content="Bonk Leagues" />
         <meta property="og:locale" content="en" />
-        <meta name="description" content="Bonk Leagues is an open source modified version of the popular game http://bonk.io/" />
-        <meta property="og:description" content="Bonk Leagues is an open source modified version of the popular game http://bonk.io/" />
+        <meta name="description" content="Bonk Leagues - a custom client, skin editor and more for http://bonk.io/" />
+        <meta property="og:description" content="Bonk Leagues - a custom client, skin editor and more for http://bonk.io/" />
         <link rel="canonical" href="https://bonkleagues.github.io/" />
         <meta property="og:url" content="https://bonkleagues.github.io/" />
         <meta property="og:site_name" content="Bonk Leagues" />
@@ -16,7 +16,17 @@
         <meta name="theme-color" content="#013e79">
 
         <link rel="icon" type="image/png" href="static/logo.png">
-        <link rel='stylesheet' type='text/css' href='static/style.css'>
+        <link rel='stylesheet' type='text/css' href='static/style.css#1'>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112446948-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-112446948-1');
+        </script>
     </head>
     <body>
         <header>
@@ -27,34 +37,71 @@
             <br/>
             <nav>
                 <a class="sel" href="index.html">Home</a>
+                <a href="client.html">Client</a>
                 <a href="skins.html">Skin Manager</a>
+                <span id="more">More &#9660;<div class="moredd"><a href="quickplay.html">Quick Play Map Checker</a></div></span>
+                <!--
                 <a href="https://discord.gg/A5zpj2a" target="_blank">Discord</a>
+                -->
             </nav>
         </header>
         <section>
-            <div id="instructions">
-                <span class="parthead" id="insthead">Instructions</span></br><br/>
-                <p style="font-weight:bold;" id="steptxt1">Before you are able to download and play Bonk Leagues, there are some instructions you have to follow.</p>
-                <p id="steptxt2">Don't worry! It won't take long. There are only <b>4</b> simple steps to take.</p>
-                <br/>
+            <a href="client.html"><img src="static/thumb1.png" class="homethumb" width="350"></a>
+            <a href="skins.html"><img src="static/thumb2.png" class="homethumb" width="350"></a>
+            <a href="more.html"><img src="static/thumb3.png" class="homethumb" width="350"></a>
+            <br/><br/><hr/><br/>
+            <span class="parthead">Welcome to Bonk Leagues!</span><br/><br/>
+            <b>Bonk Leauges is a useful website for the popular game <a href="http://bonk.io" target="_blank">bonk.io</a> where you can:</b><br/><br/>- Use our custom <a href="client.html">Bonk Leagues Client</a> with many new useful features for Bonk,
+            <br/>- Manage, save and share unlimited skins</a> with ease with our <a href="skins.html">Skin Manager</a>,<br/><i>- And many more tools for your bonk.io needs... (see the menu above)</i>
+            <br/><br/><hr/><br/><span class="parthead">Why use Bonk Leagues?</span><br/><br/>
+            Bonk Leagues is your go-to website for everything bonk.io, full of useful gaming tools.<br/><b>Just listen to these testimonials:</b><br/><br/>
+            <div class="testimonial">
+                <i>"I think that Bonk Leagues is pretty useful for any bonk.io player"</i><br/><br/>
+                - <b>Rethlit</b>
+                <br/>-<br/>&#9733;&#9733;&#9733;&#9733;&#9733; 4.5/5
             </div>
-            <!--<a id="button">⇒ Play Now ⇐</a>-->
-            <b>
-            The Bonk Leagues client will be released very Soon<sup>TM</sup><br/>
-            <span style="font-weight:400">To stay updated on the client's development, you can join the <a href="https://discord.gg/5SB5fYm" target="_blank">M4K Bonk.io Discord Server</a>.<br/><br/>
-            Meanwhile, you can use our useful <a href="skins.html">Skin Manager</a>.</span>
-            </b>
-            <br/><br/>
-            <br/><br/><br/>
-            <div id="info">
-                <span class="parthead">What is it?</span></br><br/>
-                <p style="font-weight:bold;">Bonk Leagues is a modified version of the popular game <a href="http://bonk.io" target="_blank">bonk.io</a>.</p>
-                <p>Bonk Leagues is community-run and offers many unique features that bonk.io itself does not</a>.</p>
-                <br/>
-                <span class="parthead">Features</span></br>
-                <ul>
-                    <li style="margin-left:20px;"><i>Bonk Leagues will include many useful and helpful features, such as custom servers, enhanced gameplay, and more community features.</i></li>
-                </ul>
+            <div class="testimonial">
+                <i>It isn't FULL of features yet, but with a long period of no updates from Chaz it keeps Bonk.io fresh &amp; innovated.</i><br/>
+                - <b>ilikestalker</b>
+                <br/>-<br/>&#9733;&#9733;&#9733;&#9733;&#9734; 4/5
+            </div>
+            <br/>
+            <div class="testimonial">
+                <i>"Bonk Leagues is easy, well-built &amp; active with the community."</i><br/>
+                - <b>Discoli</b>
+                <br/>-<br/>&#9733;&#9733;&#9733;&#9733;&#9733; 5/5
+            </div>
+            <div class="testimonial">
+                <i>"Mac n Cheese is my choice of beverages"</i><br/><br/>
+                - <b>Gayfish</b>
+                <br/>-<br/>?&iquest;?&iquest;? 2113/5
+            </div>
+
+            <br/><br/><br/><span class="parthead">Our Team</span><br/><br/>
+            Here are the main people behind making Bonk Leagues and related content:<br/><br/>
+            <div class="sampleskin">
+                <img class="sknframe" src="https://cdn.discordapp.com/avatars/389006875854897176/a_ff93a0310ab65fffba699813f64c2577.gif?size=128">
+                <div>
+                    <b>Discoli</b><span style="font-size:12px;color:#666;">#8295</span><br/><i>CEO &amp; P-Code Dev</i>
+                </div>
+            </div>
+            <div class="sampleskin">
+                <img class="sknframe" src="https://cdn.discordapp.com/avatars/233986468429692939/b69c73b4926ceb198e89cffc381455a8.png?size=128">
+                <div>
+                    <b>Finbae</b><span style="font-size:12px;color:#666;">#2180</span><br/><i>Frontend &amp; Web Dev</i>
+                </div>
+            </div>
+            <div class="sampleskin">
+                <img class="sknframe" src="https://cdn.discordapp.com/avatars/211854848398721034/9add9cff074a22d184da274ea97db4b5.png?size=128">
+                <div>
+                    <b>PitsPower</b><span style="font-size:12px;color:#666;">#9562</span><br/><i>Backend &amp; Bot Dev</i>
+                </div>
+            </div>
+            <div class="sampleskin">
+                <img class="sknframe" src="https://cdn.discordapp.com/avatars/126513474367913984/8b269cf7d3f0c2ffced82802e8ab0538.png?size=128">
+                <div>
+                    <b>Dionysus</b><span style="font-size:12px;color:#666;">#1409</span><br/><i>Bad Dev lol</i>
+                </div>
             </div>
 
             <span style="position:fixed;bottom:15px;right:15px;font-size:16px;z-index:998;">website by Finbae<span style="font-size:11px;color:#666;">#2180</span></span>            
@@ -62,6 +109,6 @@
 
 
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <script src="static/script.js"></script>
+        <script src="static/script.js#1"></script>
     </body>
 </html>

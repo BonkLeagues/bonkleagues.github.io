@@ -213,6 +213,10 @@ $('.skinchoice').click(function(){
         $('#addskin').slideUp();
         $('#smpskins').slideDown();
         setTimeout(function(){getSamples(1)}, 500);
+    } else if($(this).data('choice') == '4'){
+        return alert('This feature is coming soon™');
+        $('#addskin').slideUp();
+        $('#bleditor').slideDown();
     }
 });
 
