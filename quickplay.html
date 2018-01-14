@@ -67,7 +67,7 @@
                 <select id="sel1">
                     <option value="default" selected>Default</option>
                     <option value="ldratio">L/D Ratio</option>
-                    <option value="date">Modified Date</option>
+                    <option value="date">Creation Date</option>
                 </select>
                 <select id="sel2">
                     <option value="des">Descending &#9660;</option>
@@ -136,7 +136,7 @@
                     thumbsup: parseInt(getQueryVariable('thumbsup'+i, meme)),
                     thumbsdown: parseInt(getQueryVariable('thumbsdown'+i, meme)),
                     ldratio: parseInt(getQueryVariable('thumbsup'+i, meme)) / parseInt(getQueryVariable('thumbsdown'+i, meme)),
-                    modifieddate: new Date(getQueryVariable('modifieddate'+i, meme))
+                    creationdate: new Date(getQueryVariable('creationdate'+i, meme))
                 });
                 i++;
             }
@@ -159,7 +159,7 @@
             }
             if(sort == 'date'){
                 stuff2.sort(function(obj1, obj2) {
-                    return obj2.modifieddate - obj1.modifieddate;
+                    return obj2.creationdate - obj1.creationdate;
                 });
             }
             if(ascdes == 'asc'){
@@ -167,7 +167,7 @@
             }
             console.log(stuff);
             $.each(stuff2, function(i, thing){
-                $('#loadedcont').append(`<b>${pad(i+1,3)}. "${thing.mapname}</b>" by <i>${thing.authorname}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="cgr">+${thing.thumbsup.toLocaleString()}</span>/<span class="cre">-${thing.thumbsdown.toLocaleString()}</span>) <span class="cdg">- ${thing.ldratio.toFixed(2)} L/D</span></i><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cdg" style="font-size:12px;vertical-align:top;">Modified: ${thing.modifieddate.getDate()} ${months[thing.modifieddate.getMonth()]} ${thing.modifieddate.getFullYear()} - ${pad(thing.modifieddate.getHours(),2)}:${pad(thing.modifieddate.getMinutes(),2)}:${pad(thing.modifieddate.getSeconds(),2)} | ID: #${thing.id}</span><br/>`);
+                $('#loadedcont').append(`<b>${pad(i+1,3)}. "${thing.mapname}</b>" by <i>${thing.authorname}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="cgr">+${thing.thumbsup.toLocaleString()}</span>/<span class="cre">-${thing.thumbsdown.toLocaleString()}</span>) <span class="cdg">- ${thing.ldratio.toFixed(2)} L/D</span></i><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cdg" style="font-size:12px;vertical-align:top;">Created: ${thing.creationdate.getDate()} ${months[thing.creationdate.getMonth()]} ${thing.creationdate.getFullYear()} - ${pad(thing.creationdate.getHours(),2)}:${pad(thing.creationdate.getMinutes(),2)}:${pad(thing.creationdate.getSeconds(),2)} | ID: #${thing.id}</span><br/>`);
                 $('#mapnum').text(i+1);
             });
             $('#loading').slideUp();
