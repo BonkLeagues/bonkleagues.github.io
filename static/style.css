@@ -93,7 +93,7 @@ ul{
 ul li{
     padding:0;
 }
-#button{
+.button{
     background:#fb016e;
     font-size:42px;
     text-decoration:none;
@@ -106,6 +106,7 @@ ul li{
     animation:sizes 1s infinite alternate;
     box-shadow:5px 5px 0px 0px #b30050;
     cursor:pointer;
+    border:0;
 }
 @keyframes sizes{
     0% {
@@ -118,7 +119,7 @@ ul li{
 #instructions,#game{
     display:none;
 }
-#instructions img{
+#instructions img, .shadowimg{
     border:3px solid #fb016e;
     box-shadow:5px 5px 0px 0px #b30050;
 }
@@ -193,4 +194,23 @@ hr{
 .moredd a:hover{
     background-color: #013e79;
     color:#fb016e;
+}
+select{
+    background:#fb016e;
+    font-size:20px;
+    text-decoration:none;
+    color:#111;
+    font-family:'VT323', monospace;
+    text-transform:uppercase;
+    margin-left:10px;
+    display:inline-block;
+    box-shadow:5px 5px 0px 0px #b30050;
+    cursor:pointer;
+    border:0;
+    padding:8px 15px;
+    vertical-align:bottom;
+    margin-bottom:-7px;
+}
+select:focus{
+    outline:none;
 }

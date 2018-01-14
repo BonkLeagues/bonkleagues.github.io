@@ -16,7 +16,7 @@
         <meta name="theme-color" content="#013e79">
 
         <link rel="icon" type="image/png" href="static/logo.png">
-        <link rel='stylesheet' type='text/css' href='static/style.css#1'>
+        <link rel='stylesheet' type='text/css' href='static/style.css#2'>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112446948-1"></script>
@@ -34,6 +34,9 @@
         }
         .cre{
             color:red;
+        }
+        .cdg{
+            color:grey;
         }
         </style>
     </head>
@@ -56,18 +59,36 @@
         </header>
         <section>
             <span class="parthead">Maps Currently Featured in Quick Play Rotation</span><br/><br/>
-            <b>Showing <span id="mapnum">0</span> maps:</b><br/><i style="font-size:12px;">(TIP: you can use CTRL+F to search!)</i><br/><br/>
-            <div id="stuffcont" style="width:400px;text-align:left;white-space: nowrap;margin:0 auto;">
-                <b>LOADING...</b><br/><i>This may take a while, so here's a cat<br/>picture to look at while you wait:</i><br/><br/>
-                <img src="https://place.cat/c/400/300">
+
+            <div id="loaded" style="display:none;">
+                <b>Showing <span id="mapnum">0</span> maps:</b><br/><i style="font-size:12px;">(TIP: you can use CTRL+F to search!)</i>
+                <br/><br/>
+                Sort: 
+                <select id="sel1">
+                    <option value="default" selected>Default</option>
+                    <option value="ldratio">L/D Ratio</option>
+                    <option value="date">Modified Date</option>
+                </select>
+                <select id="sel2">
+                    <option value="des">Descending &#9660;</option>
+                    <option value="asc" selected>Ascending &#9650;</option>
+                </select>
+                <br/><br/><hr/></ht><br/>
             </div>
+
+            <div id="loading" style="width:400px;text-align:left;white-space: nowrap;margin:0 auto;">
+                <center><b>LOADING...</b><br/><br/><i>This may take a while, so here's a cat<br/>picture to look at while you wait:</i><br/><br/>
+                <img class="shadowimg" src="https://place.cat/c/400/300"></center>
+            </div>
+
+            <div id="loadedcont" style="width:400px;text-align:left;white-space: nowrap;margin:0 auto;display:none"></div>
             
             <span style="position:fixed;bottom:15px;right:15px;font-size:16px;z-index:998;">website by Finbae<span style="font-size:11px;color:#666;">#2180</span></span>            
         </section>
 
 
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <script src="static/script.js#1"></script>
+        <script src="static/script.js#2"></script>
         <script>
         function getQueryVariable(variable,og) {
             var query = og;
@@ -85,6 +106,16 @@
             n = n + '';
             return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
         }
+        function reverseArr(input) {
+            var ret = new Array;
+            for(var i = input.length-1; i >= 0; i--) {
+                ret.push(input[i]);
+            }
+            return ret;
+        }
+        var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+        var stuff = [];
         $.ajax({
             type: "POST",
             url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/maps9.php",
@@ -96,15 +127,57 @@
                 getrule: 'quickmatchrotation'
             }})
         .done(function(meme){
-            $('#stuffcont').html('');
             var i = 0;
             while(getQueryVariable('authorname'+i, meme)){
-                $('#mapnum').text(i+1);
-                $('#stuffcont').append(`${pad(i+1, 3)}. "<b>${getQueryVariable('mapname'+i, meme).replace(/\+/g, ' ')}</b>" by <i>${getQueryVariable('authorname'+i, meme)}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="cgr">+${parseInt(getQueryVariable('thumbsup'+i, meme)).toLocaleString()}</span>/<span class="cre">-${parseInt(getQueryVariable('thumbsdown'+i, meme)).toLocaleString()}</span>)</i><br/>`)
+                stuff.push({
+                    id: i,
+                    mapname: getQueryVariable('mapname'+i, meme).replace(/\+/g, ' '),
+                    authorname: getQueryVariable('authorname'+i, meme),
+                    thumbsup: parseInt(getQueryVariable('thumbsup'+i, meme)),
+                    thumbsdown: parseInt(getQueryVariable('thumbsdown'+i, meme)),
+                    ldratio: parseInt(getQueryVariable('thumbsup'+i, meme)) / parseInt(getQueryVariable('thumbsdown'+i, meme)),
+                    modifieddate: new Date(getQueryVariable('modifieddate'+i, meme))
+                });
                 i++;
             }
+            updateStuff('default', 'asc');
         })
         .fail(function(e){ alert('Error ['+e.status+']: '+e.statusText); });
+
+        function updateStuff(sort, ascdes){
+            $('#loadedcont').html('');
+            var stuff2 = stuff;
+            if(sort == 'default'){
+                stuff2.sort(function(obj1, obj2) {
+                    return obj1.id - obj2.id;
+                });
+            }
+            if(sort == 'ldratio'){
+                stuff2.sort(function(obj1, obj2) {
+                    return obj2.ldratio - obj1.ldratio;
+                });
+            }
+            if(sort == 'date'){
+                stuff2.sort(function(obj1, obj2) {
+                    return obj2.modifieddate - obj1.modifieddate;
+                });
+            }
+            if(ascdes == 'asc'){
+                stuff2 = reverseArr(stuff2);
+            }
+            console.log(stuff);
+            $.each(stuff2, function(i, thing){
+                $('#loadedcont').append(`<b>${pad(i+1,3)}. "${thing.mapname}</b>" by <i>${thing.authorname}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="cgr">+${thing.thumbsup.toLocaleString()}</span>/<span class="cre">-${thing.thumbsdown.toLocaleString()}</span>) <span class="cdg">- ${thing.ldratio.toFixed(2)} L/D</span></i><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cdg" style="font-size:12px;vertical-align:top;">Modified: ${thing.modifieddate.getDate()} ${months[thing.modifieddate.getMonth()]} ${thing.modifieddate.getFullYear()} - ${pad(thing.modifieddate.getHours(),2)}:${pad(thing.modifieddate.getMinutes(),2)}:${pad(thing.modifieddate.getSeconds(),2)} | ID: #${thing.id}</span><br/>`);
+                $('#mapnum').text(i+1);
+            });
+            $('#loading').slideUp();
+            $('#loaded').slideDown();
+            $('#loadedcont').fadeIn();
+        }
+
+        $('select').change(function(){
+            updateStuff($('#sel1').val(), $('#sel2').val());
+        });
         </script>
     </body>
 </html>
