@@ -132,6 +132,7 @@ ul li{
     box-shadow:5px 5px 0px 0px #00182e;
     cursor:pointer;
     margin-right:10px;
+    margin-bottom:10px;
 }
 .homethumb:hover{
     transform: scale(1.02);

@@ -1,6 +1,7 @@
 var step = 0;
 var stuff, skinchoice, skntoUse, skni, data;
 var skindata = [];
+var speccred = false;
 var pgnum = 1;
 
 $.ajaxSetup({ cache: false });
@@ -63,6 +64,7 @@ function refreshStuff(){
         }
         skinchoice = getQueryVariable('avatar1',stuff);
         $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skinchoice));
+        $('#sknframe4').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skinchoice));
     });
 }
 
@@ -79,7 +81,7 @@ function refreshSkins(){
         $('.txt-skin2').show();
         $.each(skindata, function(index, item) {
             console.log(item);
-            $('.skincont').append(`<div class="skinslot" data-skin="${index}"><img class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=${encodeURIComponent(item.avatar)}" type="image/svg+xml" style="width:48px;height:48px;display:inline-block;vertical-align:middle;box-shadow:none;margin:0px 15px;border: 3px #8e0241 solid;"><span>${item.name}</span></div>`);
+            $('.skincont').append(`<div class="skinslot" data-skin="${index}" style="animation:none"><img class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=${encodeURIComponent(item.avatar)}" type="image/svg+xml" style="width:48px;height:48px;display:inline-block;vertical-align:middle;box-shadow:none;margin:0px 15px;border: 3px #8e0241 solid;"><span>${item.name}</span></div>`);
         });
     } else {
         $('.txt-skin2').hide();
@@ -110,6 +112,35 @@ function getSamples(page){
     });
 }
 
+var shareddata;
+if(window.location.hash) {
+    shareddata = window.location.hash.substring(1);
+    if(shareddata.split('|')[2]){
+        shareddata = shareddata.split('|');
+        $('#button').hide();
+        $('.sharedname').text(decodeURIComponent(shareddata[0]));
+        $('.sharedby').text(decodeURIComponent(shareddata[1]));
+        $('#sharedimg').attr('src',`http://finbae.co.uk/bl/prevgen.php?t=${shareddata[0]}&b=${shareddata[1]}&skinCode=${shareddata[2]}`);
+        $('#shared').slideDown();
+    }
+}
+
+$('#sharedyes').click(function(){
+    $('#button').attr('data-next', 'addskin2');
+    speccred = shareddata[1];
+    skinchoice = decodeURIComponent(shareddata[2]);
+    $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+shareddata[2]);
+    $('#sknframe4').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+shareddata[2]);
+    $('#skn').val(decodeURIComponent(shareddata[0]));
+    $('#shared').slideUp();
+    $('#button').slideDown();
+});
+
+$('#sharedno').click(function(){
+    $('#shared').slideUp();
+    $('#button').slideDown();
+});
+
 $('#pgnext').click(function(){
     if(!$(this).hasClass('disabled')){
         $('.pg').addClass('disabled');
@@ -127,9 +158,11 @@ $('#pgprev').click(function(){
 });
 
 $(document).on("click",".sampleskin",function() {
+    speccred = data[parseInt($(this).data('smskin'))].by;
     skinchoice = data[parseInt($(this).data('smskin'))].avatar;
     $('#smpskins').slideUp();
     $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skinchoice));
+    $('#sknframe4').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skinchoice));
     $('#skn').val(data[parseInt($(this).data('smskin'))].name);
     $('#addskin2').slideDown();
 });
@@ -143,6 +176,7 @@ $(document).on("click",".skinslot",function() {
         skntoUse = skindata[skni];
         $('#skne').val(skntoUse.name);
         $('#sknframe').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skntoUse.avatar));
+        $('#sknframe3').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skntoUse.avatar));
 
         $('#loggedin').slideUp();
         $('#editskin').slideDown();
@@ -151,6 +185,65 @@ $(document).on("click",".skinslot",function() {
 
 $('#skncode').click(function(){
     prompt("Press CTRL+C to copy the skin code!", skntoUse.avatar);
+});
+
+$('#sknshrlink').click(function(){
+    if(!$(this).hasClass('disabled')){
+        $('#sknshrlink').addClass('disabled');
+        $('#sknshrlink').text('Please wait...');
+        var tmpname = encodeURIComponent(getQueryVariable('retreivedusername',stuff));
+        if(skntoUse.cred){
+            tmpname = encodeURIComponent(skntoUse.cred);
+        }
+        $.ajax({
+            type: "GET",
+            url: "https://api-ssl.bitly.com/v3/shorten",
+            dataType: "json",
+            data: {
+                longUrl: `https://bonkleagues.github.io/skins.html#${encodeURIComponent(skntoUse.name)}|${tmpname}|${encodeURIComponent(skntoUse.avatar)}`,
+                login: 'finbae',
+                apiKey: 'R_5373fb46400847f6887462e6cfb9585c'
+            }})
+        .done(function(meme){
+            if(meme.status_code == 200){
+                $('#sknshrlink').removeClass('disabled');
+                $('#sknshrlink').text('Get Skin Sharing link (recommended)');
+                prompt('Press CTRL+C to copy the skin sharing link! You can then send it to your friends so they can add your skin.',meme.data.url);
+            } else {
+                alert('There was an error getting the skin sharing link. Sorry :/');
+            }
+            console.log(meme);
+        })
+        .fail(function(e){ alert('Error ['+e.status+']: '+e.statusText); });
+    }
+});
+
+$('#sknframe').click(function(){
+    $('#sknframe3,#overlay').fadeIn(200);
+});
+$('#sknframe2').click(function(){
+    $('#sknframe4,#overlay').fadeIn(200);
+});
+
+$('#sknframe3,#overlay').click(function(){
+    $('#sknframe3,#overlay').fadeOut(200);
+});
+$('#sknframe4,#overlay').click(function(){
+    $('#sknframe4,#overlay').fadeOut(200);
+});
+
+$('#shrskin').click(function(){
+    $('#editskin').slideUp();
+    var tmpname = encodeURIComponent(getQueryVariable('retreivedusername',stuff));
+    if(skntoUse.cred){
+        tmpname = encodeURIComponent(skntoUse.cred);
+    }
+    $('#genskni-l').show();
+    $('#genskni').hide();
+    $('#sknshrlink').removeClass('disabled');
+    $('#sknshrlink').text('Get Skin Sharing link (recommended)');
+    $('#genskni').attr('src',`http://finbae.co.uk/bl/prevgen.php?t=${encodeURIComponent(skntoUse.name)}&b=${tmpname}&skinCode=${encodeURIComponent(skntoUse.avatar)}`);
+    $('#shareskin').slideDown();
 });
 
 $('#edskin').click(function(){
@@ -198,15 +291,18 @@ $('#aplskin').click(function(){
 
 $('.skinchoice').click(function(){
     if($(this).data('choice') == '1'){
+        speccred = false;
         refreshStuff();
         $('#addskin').slideUp();
         $('#addskin2').slideDown();
     } else if($(this).data('choice') == '2'){
+        speccred = false;
         var tmpv = prompt('Paste skin code here:');
         if(tmpv != null){
             skinchoice = tmpv;
             $('#addskin').slideUp();
             $('#sknframe2').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skinchoice));
+            $('#sknframe4').attr('src','https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode='+encodeURIComponent(skinchoice));
             $('#addskin2').slideDown();
         }
     } else if($(this).data('choice') == '3'){
@@ -214,6 +310,7 @@ $('.skinchoice').click(function(){
         $('#smpskins').slideDown();
         setTimeout(function(){getSamples(1)}, 500);
     } else if($(this).data('choice') == '4'){
+        speccred = false;
         return alert('This feature is coming soon™');
         $('#addskin').slideUp();
         $('#bleditor').slideDown();
@@ -221,10 +318,15 @@ $('.skinchoice').click(function(){
 });
 
 $('#svskin').click(function(){
+    var cred = escapeHtml(getQueryVariable('retreivedusername',stuff));
+    if(speccred != false){
+        cred = speccred;
+    }
     $('#svskin').hide();
     skindata.push({
         name: escapeHtml($('#skn').val()),
-        avatar: skinchoice
+        avatar: skinchoice,
+        cred: cred
     });
     localStorage.setItem("skindata", JSON.stringify(skindata));
     $('#addskin2').slideUp();
@@ -265,7 +367,7 @@ $('#button').click(function(){
                     $('.s-name').text(getQueryVariable('retreivedusername',stuff));
                     refreshSkins();
                     $('#button').slideUp();
-                    $('#loggedin').slideDown();
+                    $('#'+$('#button').data('next')).slideDown();
                 } else { errout('Invalid login details/Network error!'); }
             })
             .fail(function(e){ errout('Login error ['+e.status+']: '+e.statusText); });

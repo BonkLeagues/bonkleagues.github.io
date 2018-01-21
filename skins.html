@@ -16,7 +16,7 @@
         <meta name="theme-color" content="#013e79">
 
         <link rel="icon" type="image/png" href="static/logo.png">
-        <link rel='stylesheet' type='text/css' href='static/skinstyle.css#v7'>
+        <link rel='stylesheet' type='text/css' href='static/skinstyle.css#v8'>
 
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
@@ -40,7 +40,7 @@
         <header>
             <a href="index.html" id="defaulta">
                 <img src="static/logo.png" id="logo" draggable="false">
-                <h1>Skin Manager<span id="typing">_</span><span style="font-size:18px;vertical-align:top">v2.1</span></h1>
+                <h1>Skin Manager<span id="typing">_</span><span style="font-size:18px;vertical-align:top">v3.0</span></h1>
             </a>
             <br/>
             <nav>
@@ -60,45 +60,45 @@
                 <p id="txt-skin1" style="display:none">You have no saved skins yet. You can use the plus button to add one!<br/><br/>We recommend adding your current skin first.</p>
                 <div class="skincont" style="display:inline-block"></div><div class="skinslot" data-skin="addskin"><span style="margin-left:20px;">+</span></div>
                 <br/>
-                <a class="button" style="font-size:24px;padding:5px 10px;animation:none;" onclick="window.location.reload(true)">Logout</a>
+                <a class="button" style="font-size:24px;padding:5px 10px;animation:none;" onclick="window.location = 'skins.html';">Logout</a>
                 <br/><br/>
                 <p style="font-style:italic;font-size:12px;display:none" class="txt-skin2">Info: click a skin slot above to edit it, apply it, or get its skin code.<br/><br/>-</p>
                 <p style="font-weight:bold;font-size:12px;display:none" class="txt-skin2">
                     Important: Bonk Leagues Skin Manager uses localstorage to save skins, <br/>
                     meaning skins are saved only in this browser, NOT YOUR BONK ACCOUNT!<br/><br/>
-                    <span style="font-weight:400;font-style:italic">Make sure to backup your skin codes if you are switching computers!</span>
+                    <span style="font-weight:400;font-style:italic">Make sure to backup your skin codes if you are switching computers<br/>or clearing your browser history!</span>
                 </p>
                 <br/>
             </div>
 
             <div id="addskin">
                 <span class="parthead">Add skin from...</span><br/><br/>
-                <div class="skinchoice" data-choice="4">
-                    <img src="static/icon4.png" width="64">
-                    <div>
-                        <b>Use the Bonk Leagues Skin Editor <span style="color:#fb016e">NEW!</span></b><br/>
-                        Create a skin with our new built-in editor
-                    </div>
-                </div>
-                <div class="skinchoice" data-choice="1">
+                <div class="choice skinchoice" data-choice="1">
                     <img src="static/icon2.png" width="64">
                     <div>
                         <b>My current skin</b><br/>
                         Adds your current skin from bonk.io
                     </div>
                 </div>
-                <div class="skinchoice" data-choice="2">
+                <div class="choice skinchoice" data-choice="2">
                     <img src="static/icon1.png" width="64">
                     <div>
                         <b>Enter skin code</b><br/>
                         Adds a skin from its unique skin code
                     </div>
                 </div>
-                <div class="skinchoice" data-choice="3">
+                <div class="choice skinchoice" data-choice="3">
                     <img src="static/icon3.png" width="64">
                     <div>
                         <b>Sample skins</b><br/>
                         Pick from a selection of premade skins
+                    </div>
+                </div>
+                <div class="choice skinchoice" data-choice="4">
+                    <img src="static/icon4.png" width="64">
+                    <div>
+                        <b>Use the Bonk Leagues Skin Editor <span style="color:#fb016e">COMING SOON!</span></b><br/>
+                        Create a skin with our new built-in editor
                     </div>
                 </div>
                 <br/>
@@ -123,6 +123,7 @@
 
             <div id="addskin2">
                 <span class="parthead">Adding skin</span><br/><br/>
+                <img class="sknframe sknframebig" id="sknframe4" type="image/svg+xml">
                 <img class="sknframe" id="sknframe2" type="image/svg+xml"><br/><br/>
                 <b>What would you like to name this skin?</b><br/><br/>
                 <input type="text" id="skn" maxlength="30" size="30" value="Skin"><br/>
@@ -132,13 +133,42 @@
 
             <div id="editskin">
                 <span class="parthead">Editing skin</span><br/><br/>
+                <img class="sknframe sknframebig" id="sknframe3" type="image/svg+xml">
                 <img class="sknframe" id="sknframe" type="image/svg+xml"><br/><br/>
                 Skin name: <input type="text" id="skne" maxlength="30" size="30"><br/><br/>
-                <a id="skncode" class="button" style="font-size:24px;padding:5px 10px;animation:none;">Get Skin Code</a>
+                <a id="shrskin" class="button" style="font-size:24px;padding:5px 10px;animation:none;">Share Skin</a>
                 <a id="aplskin" class="button" style="font-size:24px;padding:5px 10px;animation:none;">Apply skin on Bonk.io</a>
                 <br/><br/>
                 <a id="edskin" class="button" style="font-size:24px;padding:5px 10px;margin-right:30px;animation:none;">Done</a><a id="delskin" class="button" style="font-size:24px;padding:5px 10px;margin-left:-10px;animation:none;">Delete Skin</a><br/><br/>
                 <p style="font-style:italic;font-size:12px">Tip: You can share your skin code (press 'get skin code' button to do this!) with a friend and<br/>then they will be able to use your skin in the Skin Manager too! :)<br/><br/>ps. credit to its_magic for the skin previews &lt;3!</p>
+            </div>
+
+            <div id="shareskin">
+                <span class="parthead">Share your skin</span><br/><br/>
+                <i style="font-size:13px;">Note: The following codes are for <b style="text-decoration:underline">sharing</b> meaning whoever you give these codes to will be able to <b style="text-decoration:underline">use your skin</b>.</i>
+                <br/><br/>
+                <a id="sknshrlink" class="button" style="font-size:24px;padding:5px 10px;animation:none;margin-bottom:15px;">Get Skin Sharing link (recommended)</a><br/>
+                <b>or</b><br/>
+                <a id="skncode" class="button" style="font-size:24px;padding:5px 10px;animation:none;margin-top:15px;">Get Skin Code</a>
+                <br/><br/><hr/><br/>
+                <span class="parthead">Show your skin</span><br/><br/>
+                <b>Generated Skin Image:</b><br/>
+                <i style="font-size:13px;">Note: If sharing to Discord or other social media, <b style="text-decoration:underline">use 'Copy image' instead of 'Copy image address'.</b></i>
+                <br/><br/>
+                <span id="genskni-l">loading...</span>
+                <img style="display:none;" id="genskni" onload="$('#genskni-l').hide();$('#genskni').fadeIn();">
+                
+                <br/><br/>
+                <a class="button cancel" data-cancel="shareskin" style="font-size:24px;padding:5px 10px;margin-left:-5px;animation:none">Back</a>
+            </div>
+
+            <div id="shared">
+                <span class="parthead">A skin has been shared with you!</span><br/><br/>
+                <b class="sharedby">Unknown</b> has shared their skin "<b class="sharedname">Unknown</b>" with you!<br/><br/>
+                <img id="sharedimg"><br/><br/>
+                <i>Do you want to add it to your Skin Manager saved skins?</i><br/>
+                <a id="sharedyes" class="button" style="font-size:24px;padding:5px 10px;animation:none;margin-top:15px;">Yes!</a>
+                <a id="sharedno" class="button" style="font-size:24px;padding:5px 10px;animation:none;margin-top:15px;">Nope</a>
             </div>
 
             <div id="instructions">
@@ -148,8 +178,8 @@
                 <p id="errtxt" style="font-style:italic;font-size:12px">Note: All requests are sent through bonk.io's servers (using a CORS proxy), and accessed client side with AJAX. Basically, <b>WE CANNOT SEE YOUR LOGIN DETAILS!</b></p>
                 <br/>
             </div>
-            <a id="button" class="button">Login with Bonk.io</a>
-            <br/><br/><br/><br/>
+            <a id="button" class="button" data-next="loggedin">Login with Bonk.io</a>
+            <br/><br/><br/><hr/><br/>
             <div id="info">
                 <span class="parthead">Info</span><br/>
                 <p style="font-weight:bold;">Welcome to the Bonk Leagues Skin Manager! To start, log in above.</p>
@@ -162,18 +192,19 @@
                 <p>Also, we are always looking for any good skin makers to make some skins for the sample skins page (you will be credited!)</p>
             </div>
             
-            <div style="margin:0 auto;width:468px;height:60px;margin-top:50px;box-shadow:5px 5px 0px 0px #b30050;border:3px solid #fb016e;text-align:left;">
-                <span style="position:absolute;width:460px;color:#fb016e;font-weight:bold;font-size:15px;text-align:center;padding:3px;overflow:none;z-index:-999;">It looks like you have an ad-blocker on. To help support the development of Bonk Leagues and the Skin Manager, we'd like it if you would disable it &lt;3.</span>
+            <div id="promo">
+                <span>It looks like you have an ad-blocker on. To help support the development of Bonk Leagues and the Skin Manager, we'd like it if you would disable it &lt;3.</span>
                 <script data-cfasync='false' type='text/javascript' src='//p126242.clksite.com/adServe/banners?tid=126242_509091_0'></script>
             </div>
         
             <span style="position:fixed;bottom:15px;right:15px;font-size:16px;z-index:998;">website by Finbae<span style="font-size:11px;color:#666;">#2180</span></span>
         </section>
 
+        <div id="overlay"></div>
 
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script src="static/md5.js"></script>
         <script src="static/skineditor.js#v1"></script>
-        <script src="static/skinscript.js#v7"></script>
+        <script src="static/skinscript.js#v8"></script>
     </body>
 </html>
