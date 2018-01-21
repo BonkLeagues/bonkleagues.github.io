@@ -21,7 +21,7 @@ function create_image()
     $width = abs($use_b[4] - $use_b[0]) + 155;
     $height = 120;  
 
-    $image = imagecreate($width, $height);
+    $image = imagecreatetruecolor($width, $height);
 
     $blgrey = imagecolorallocate($image, 17, 17, 17);  
     $blpink = imagecolorallocate($image, 251, 1, 110);
