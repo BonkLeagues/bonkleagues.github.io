@@ -26,6 +26,21 @@ header h1{
     vertical-align:middle;
     margin-bottom:30px;
 }
+@media screen and (max-width: 480px) {
+    header h1 {
+        display:none;
+    }
+    header img{
+        margin-bottom:10px;
+    }
+    #more{
+        display:none !important;
+    }
+    #button{
+        animation:none;
+        margin-left:0;
+    }
+}
 #loggedin h1{
     font-size:40px;
     font-weight:normal;
@@ -176,7 +191,7 @@ input[type=text],input[type=password]{
     margin-right:20px;
 }
 .choice{
-    width:600px;
+    max-width:600px;
     text-align:left;
     margin:0 auto;
     padding-bottom:15px;
@@ -189,7 +204,7 @@ input[type=text],input[type=password]{
 .choice div{
     display:inline-block;
     vertical-align:middle;
-    width:500px;
+    max-width:500px;
 }
 .choice img{
     display:inline-block;
