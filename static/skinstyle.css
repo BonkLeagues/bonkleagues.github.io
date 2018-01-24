@@ -287,8 +287,8 @@ input[type=text],input[type=password]{
 }
 #promo{
     margin:0 auto;
-    width:468px;
-    height:60px;
+    max-width:468px;
+    max-height:60px;
     margin-top:50px;
     box-shadow:5px 5px 0px 0px #b30050;
     border:3px solid #fb016e;
@@ -299,11 +299,12 @@ input[type=text],input[type=password]{
     width:460px;
     color:#fb016e;
     font-weight:bold;
-    font-size:15px;
+    font-size:10px;
     text-align:center;
     padding:3px;
     overflow:none;
     z-index:-999;
+    vertical-align:middle;
 }
 #promo div{
     background:#fff;
