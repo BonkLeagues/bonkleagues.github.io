@@ -313,11 +313,6 @@ hr{
     border:1px solid #222;
     width:50%;
 }
-.adsbygoogle iframe{
-    box-shadow:5px 5px 0px 0px #b30050;
-    border:3px solid #fb016e;
-    background:#fff;
-}
 #adbnote{
     display:none;
     font-family:'VT323', monospace;
