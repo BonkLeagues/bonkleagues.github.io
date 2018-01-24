@@ -58,3 +58,12 @@ function instructions(){
     }
     step++;
 }
+
+function adBlockDetected() {
+	$('#adbnote').show();
+}
+if(typeof blockAdBlock === 'undefined') {
+	adBlockDetected();
+} else {
+	blockAdBlock.onDetected(adBlockDetected);
+}

@@ -375,3 +375,12 @@ $('#button').click(function(){
         } else { errout('The username/password box is blank.'); }
     }
 });
+
+function adBlockDetected() {
+	$('#adbnote').show();
+}
+if(typeof blockAdBlock === 'undefined') {
+	adBlockDetected();
+} else {
+	blockAdBlock.onDetected(adBlockDetected);
+}

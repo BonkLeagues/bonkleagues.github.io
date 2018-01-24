@@ -215,3 +215,19 @@ select{
 select:focus{
     outline:none;
 }
+.adsbygoogle iframe{
+    box-shadow:5px 5px 0px 0px #b30050;
+    border:3px solid #fb016e;
+    background:#fff;
+}
+#adbnote{
+    display:none;
+    font-family:'VT323', monospace;
+    color:#fb016e;
+    max-width:400px;
+    margin:0 auto;
+    font-size:22px;
+    padding:10px;
+    box-shadow:5px 5px 0px 0px #b30050;
+    border:3px solid #fb016e;
+}
