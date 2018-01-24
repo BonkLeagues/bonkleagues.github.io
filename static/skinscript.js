@@ -54,7 +54,7 @@ function refreshStuff(){
         dataType: "text",
         data: {
             task: 1,
-            username: encodeURIComponent($('#un').val()),
+            username: $('#un').val(),
             password: $.md5($('#pw').val())
         }})
     .done(function(a){
@@ -358,7 +358,7 @@ $('#button').click(function(){
                 dataType: "text",
                 data: {
                     task: 1,
-                    username: encodeURIComponent($('#un').val()),
+                    username: $('#un').val(),
                     password: $.md5($('#pw').val())
                 }})
             .done(function(a){
