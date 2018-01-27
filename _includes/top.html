@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>{{ page.title }}</title>
+
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta property="og:title" content="{{ page.title }}" />
+        <meta property="og:locale" content="en" />
+        <meta name="description" content="{{ page.desc }}" />
+        <meta property="og:description" content="{{ page.desc }}" />
+        <link rel="canonical" href="{{ page.canonical }}" />
+        <meta property="og:url" content="{{ page.canonical }}" />
+        <meta property="og:site_name" content="Bonk Leagues" />
+        <meta property="og:image" content="https://bonkleagues.github.io/static/img/logo.png" />
+        <meta name="theme-color" content="#013e79">
+
+        <link rel="icon" type="image/png" href="static/img/logo.png">
+        <link rel='stylesheet' type='text/css' href='static/css/{{ page.styleToUse }}.css#20'>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112446948-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-112446948-1');
+        </script>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" id="defaulta">
+                <img src="static/img/logo.png" id="logo" draggable="false">
+                <h1>{{ page.title }}<span id="typing">_</span>{% if page.sel == 'skins' %}<span style="font-size:18px;vertical-align:top">v3.1</span>{% endif %}</h1>
+            </a>
+            <br/>
+            <nav>
+                <a{% if page.sel == 'home' %} class="sel"{% endif %} href="index.html">Home</a>
+                <a{% if page.sel == 'client' %} class="sel"{% endif %} href="client.html">Client</a>
+                <a{% if page.sel == 'skins' %} class="sel"{% endif %} href="skins.html">Skin Manager</a>
+                <span id="more">More &#9660;<div class="moredd"><a href="quickplay.html">Quick Play Map Checker</a></div></span>
+                <!--
+                <a href="https://discord.gg/A5zpj2a" target="_blank">Discord</a>
+                -->
+            </nav>
+        </header>
+        <section>
