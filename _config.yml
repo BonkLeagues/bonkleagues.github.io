@@ -2,6 +2,7 @@ defaults:
   -
     values:
       title: 'Bonk Leagues'
+      shorttitle: 'Bonk Leagues'
       layout: 'default'
       desc: 'Bonk Leagues - a custom client, skin editor and more for http://bonk.io/'
       canonical: 'https://bonkleagues.github.io/'

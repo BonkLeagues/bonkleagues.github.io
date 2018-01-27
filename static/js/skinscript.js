@@ -92,7 +92,7 @@ function refreshSkins(){
 function getSamples(page){
     $('.pg').removeClass('disabled')
     $('#smpskincont').html('');
-    $.getJSON("static/json/sample-skins.json", function(res) {
+    $.getJSON("static/data/sample-skins.json", function(res) {
         if(data == null){ data = shuffle(res); }
         console.log(data);
         var totpages = Math.ceil(data.length / 8);
