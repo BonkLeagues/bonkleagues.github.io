@@ -339,3 +339,16 @@ hr{
     box-shadow:5px 5px 0px 0px #b30050;
     border:3px solid #fb016e;
 }
+::-webkit-scrollbar-button, ::-webkit-scrollbar-track{
+    display:none;
+}
+::-webkit-scrollbar-thumb{
+    background-color:#fb016e;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color:#b30050;
+}
+::-webkit-scrollbar{
+    width:7px;
+    overflow:overlay;
+}

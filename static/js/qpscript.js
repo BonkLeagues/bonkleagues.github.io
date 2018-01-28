@@ -35,18 +35,26 @@ $.ajax({
         getrule: 'quickmatchrotation'
     }})
 .done(function(meme){
-    var i = 0;
-    while(getQueryVariable('authorname'+i, meme)){
-        stuff.push({
-            id: i,
-            mapname: getQueryVariable('mapname'+i, meme).replace(/\+/g, ' '),
-            authorname: getQueryVariable('authorname'+i, meme),
-            thumbsup: parseInt(getQueryVariable('thumbsup'+i, meme)),
-            thumbsdown: parseInt(getQueryVariable('thumbsdown'+i, meme)),
-            ldratio: parseInt(getQueryVariable('thumbsup'+i, meme)) / parseInt(getQueryVariable('thumbsdown'+i, meme)),
-            creationdate: new Date(getQueryVariable('creationdate'+i, meme))
-        });
-        i++;
+    var memeSplit = meme.split("&");
+    for (var i=0;i<memeSplit.length;i++) {
+        var regexStuff = memeSplit[i].match(/(.+?)(\d+)?=(.*)/);
+        if (regexStuff[2]) {
+            if (regexStuff[2] == stuff.length) {
+                var obj = {};
+                obj[regexStuff[1]] = regexStuff[3];
+                stuff.push(obj);
+            } else {
+                stuff[regexStuff[2]][regexStuff[1]] = regexStuff[3];
+            }
+        }
+    }
+    for (var i=0;i<stuff.length;i++) {
+        stuff[i].id = i;
+        stuff[i].mapname = decodeURIComponent(stuff[i].mapname.replace(/\+/g, ' '));
+        stuff[i].thumbsup = parseInt(stuff[i].thumbsup);
+        stuff[i].thumbsdown = parseInt(stuff[i].thumbsdown);
+        stuff[i].ldratio = stuff[i].thumbsup / stuff[i].thumbsdown;
+        stuff[i].creationdate = new Date(stuff[i].creationdate.replace(/\s/, 'T'));
     }
     updateStuff('default', 'asc');
 })
