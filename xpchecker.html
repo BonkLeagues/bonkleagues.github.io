@@ -1,0 +1,25 @@
+---
+title: 'Bonk.io XP Checker'
+desc: "Easily check any Bonk player's XP, just by typing their name."
+canonical: 'https://bonkleagues.github.io/xpchecker.html'
+sel: ''
+scriptToUse: 'xpscript'
+---
+<span class="parthead">Player XP Checker</span><br/>
+<div id="nextpage" style="display:none">
+    <h1 style="font-size:40px;font-weight:normal;font-family:'VT323',monospace;"><span class="s-username">X</span>'s XP</h1>
+    Level <b class="s-lvl">XX</b> - XP: <b class="s-xp">XXXXXX</b><br/><br/>
+    Progress: <b class="s-percent">XX%</b> (<span class="s-clvlxp">X</span>/<span class="s-clvlnxp">X</span>)
+    <div id="outerprogress">
+        <div id="innerprogress"></div>
+        <span><span class="s-percent">XX%</span></span>
+    </div>
+    <br/>
+    <button class="button" style="font-size:24px;padding:5px 10px;animation:none;margin-left:0;" onclick="location.reload()">Back</button>
+</div>
+<div id="startpage">
+    <p style="font-style:italic;font-size:14px;">Type in the username of the bonk.io player who's XP you want to check.</p>
+    <input type="text" id="un" maxlength="15" size="30" style="margin-right:10px;" placeholder="Bonk.io username">
+    <button id="check" class="button" style="font-size:24px;padding:5px 10px;animation:none;margin-left:0;">Check XP</button>
+    <p id="errtxt" style="font-style:italic;font-size:12px"></p>
+</div>

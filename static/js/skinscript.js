@@ -406,13 +406,3 @@ $('#button').click(function(){
         } else { errout('The username/password box is blank.'); } //Show error when nessicary
     }
 });
-
-//Adblock detection
-function adBlockDetected() {
-	$('#adbnote').show();
-}
-if(typeof blockAdBlock === 'undefined') {
-	adBlockDetected();
-} else {
-	blockAdBlock.onDetected(adBlockDetected);
-}

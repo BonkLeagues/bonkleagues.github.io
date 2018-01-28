@@ -186,11 +186,13 @@ hr{
     display:none;
     position:absolute;
     background-color: #fb016e;
-    min-width: 290px;
+    min-width: 275px;
     box-shadow:5px 5px 0px 0px #b30050;
     z-index: 1;
     margin-left:-10px;
     margin-top:3px;
+    text-align:left;
+    padding-left:15px;
 }
 #more{
     position:relative;
@@ -203,6 +205,7 @@ hr{
     color:#013e79;
     line-height:50px;
     padding:5px 10px;
+    width:100%;
 }
 .moredd a:hover{
     background-color: #013e79;
@@ -256,4 +259,51 @@ select:focus{
 ::-webkit-scrollbar{
     width:7px;
     overflow:overlay;
+}
+input[type=text],input[type=password]{
+    background:#ccc;
+    font-size:21px;
+    text-decoration:none;
+    color:#111;
+    padding:5px 10px;
+    font-family:'VT323', monospace;
+    margin-left:5px;
+    display:inline-block;
+    box-shadow:5px 5px 0px 0px #777;
+    margin-bottom:20px;
+    border:0px;
+}
+.disabled.button{
+    cursor:not-allowed;
+    box-shadow:none;
+    background:#b30050;
+    animation:none !important;
+}
+input[type=text].disabled,input[type=password].disabled{
+    cursor:not-allowed;
+    background:#555 !important;
+    box-shadow:none;
+}
+#outerprogress{
+    max-width:400px;
+    height:30px;
+    background:#013e79;
+    margin:0 auto;
+    margin-top:15px;
+    padding:5px;
+    position:relative;
+}
+#innerprogress{
+    background:#fb016e;
+    height:100%;
+}
+#outerprogress span{
+    position:absolute;
+    vertical-align:top;
+    font-family:'VT323', monospace;
+    top:4px;
+    left:0px;
+    font-size:24px;
+    text-align:center;
+    width:100%;
 }

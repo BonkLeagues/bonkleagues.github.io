@@ -16,7 +16,7 @@
         <meta name="theme-color" content="#013e79">
 
         <link rel="icon" type="image/png" href="/static/img/logo.png">
-        <link rel='stylesheet' type='text/css' href='/static/css/{{ page.styleToUse }}.css#22'>
+        <link rel='stylesheet' type='text/css' href='/static/css/{{ page.styleToUse }}.css#23'>
 
         <meta name="google-site-verification" content="FEijvMGwCNkxbshW2jR9aTTYvpJFDkejSXJRR7cPfpQ" />
         <meta name="msvalidate.01" content="D8571762A86E4870190A09991372AD65" />
@@ -55,7 +55,12 @@
                 <a{% if page.sel == 'home' %} class="sel"{% endif %} href="/index.html">Home</a>
                 <a{% if page.sel == 'client' %} class="sel"{% endif %} href="/client.html">Client</a>
                 <a{% if page.sel == 'skins' %} class="sel"{% endif %} href="/skins.html">Skin Manager</a>
-                <span id="more">More &#9660;<div class="moredd"><a href="/quickplay.html">Quick Play Map Checker</a></div></span>
+                <span id="more">More &#9660;
+                    <div class="moredd">
+                        <a href="/quickplay.html">Quick Play Map Checker</a>
+                        <a href="/xpchecker.html">XP Checker</a>
+                    </div>
+                </span>
                 <!--
                 <a href="https://discord.gg/A5zpj2a" target="_blank">Discord</a>
                 -->
