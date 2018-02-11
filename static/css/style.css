@@ -71,6 +71,14 @@ nav a:hover, #more:hover{
     background:#fb016e;
     color:#013e79;
 }
+#discordlink{
+    color:#7289DA;
+    font-size:22px;
+}
+#discordlink:hover{
+    background:#7289DA;
+    color:#013e79;
+}
 nav .sel{
     background:#fb016e;
     color:#013e79;
@@ -84,7 +92,7 @@ section{
     padding-top:52px;
     padding-bottom:50px;
 }
-section a{
+section a, #cusa{
     color:#fb016e;
 }
 .parthead{

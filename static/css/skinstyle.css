@@ -81,6 +81,14 @@ nav a:hover, #more:hover{
     background:#fb016e;
     color:#013e79;
 }
+#discordlink{
+    color:#7289DA;
+    font-size:22px;
+}
+#discordlink:hover{
+    background:#7289DA;
+    color:#013e79;
+}
 nav .sel{
     background:#fb016e;
     color:#013e79;
@@ -94,7 +102,7 @@ section{
     padding-top:52px;
     padding-bottom:50px;
 }
-section a{
+section a, #cusa{
     color:#fb016e;
 }
 .parthead{
@@ -186,6 +194,12 @@ input[type=text],input[type=password]{
     cursor:pointer;
     animation:sizes2 1s infinite alternate;
 }
+.sort-placeholder{
+    display:inline-block;
+    border:1px dashed #ccc;
+    vertical-align:middle;
+    margin:0px 10px;
+}
 .skinslot span{
     vertical-align:middle;
     margin-right:20px;
@@ -252,11 +266,13 @@ input[type=text],input[type=password]{
     display:none;
     position:absolute;
     background-color: #fb016e;
-    min-width: 290px;
+    min-width: 275px;
     box-shadow:5px 5px 0px 0px #b30050;
     z-index: 1;
     margin-left:-10px;
     margin-top:3px;
+    text-align:left;
+    padding-left:15px;
 }
 #more{
     position:relative;

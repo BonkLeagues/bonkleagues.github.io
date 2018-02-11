@@ -16,7 +16,15 @@
         <meta name="theme-color" content="#013e79">
 
         <link rel="icon" type="image/png" href="/static/img/logo.png">
-        <link rel='stylesheet' type='text/css' href='/static/css/{{ page.styleToUse }}.css#23'>
+        <link rel='stylesheet' type='text/css' href='/static/css/{{ page.styleToUse }}.css#25'>
+
+        {% if page.sel == 'skins' %}
+        <link rel='stylesheet' type='text/css' href='/static/css/jquery-ui.min.css'>
+        {% endif %}
+
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="static/css/remodal.css">
+        <link rel="stylesheet" href="static/css/remodal-default-theme.css">
 
         <meta name="google-site-verification" content="FEijvMGwCNkxbshW2jR9aTTYvpJFDkejSXJRR7cPfpQ" />
         <meta name="msvalidate.01" content="D8571762A86E4870190A09991372AD65" />
@@ -48,12 +56,14 @@
         <header>
             <a href="/" id="defaulta">
                 <img src="/static/img/logo.png" id="logo" draggable="false">
-                <h1>{{ page.shorttitle }}<span id="typing">_</span>{% if page.sel == 'skins' %}<span style="font-size:18px;vertical-align:top">v3.1</span>{% endif %}</h1>
+                <h1>{{ page.shorttitle }}<span id="typing">_</span>{% if page.sel == 'skins' %}<span style="font-size:18px;vertical-align:top">v3.2</span>{% endif %}</h1>
             </a>
             <br/>
             <nav>
                 <a{% if page.sel == 'home' %} class="sel"{% endif %} href="/index.html">Home</a>
+                <!--
                 <a{% if page.sel == 'client' %} class="sel"{% endif %} href="/client.html">Client</a>
+                -->
                 <a{% if page.sel == 'skins' %} class="sel"{% endif %} href="/skins.html">Skin Manager</a>
                 <span id="more">More &#9660;
                     <div class="moredd">
@@ -61,9 +71,7 @@
                         <a href="/xpchecker.html">XP Checker</a>
                     </div>
                 </span>
-                <!--
-                <a href="https://discord.gg/A5zpj2a" target="_blank">Discord</a>
-                -->
+                <a href="https://discord.gg/RadQ7xx" id="discordlink" target="_blank"><i class="fab fa-discord"></i></a>
             </nav>
         </header>
         <section>

@@ -4,6 +4,7 @@ var stuff, skinchoice, skntoUse, skni, data;
 var skindata = [];
 var speccred = false;
 var pgnum = 1;
+const prevgenurl = 'http://sebweb.co.uk/blbackend/prevgen.php';
 
 //Set up AJAX to not cache the sample skins
 $.ajaxSetup({ cache: false });
@@ -50,6 +51,10 @@ function shuffle(array) { //Shuffle an array (used for sample skins)
     return array;
 }
 
+Array.prototype.move = function(from, to) {
+    this.splice(to, 0, this.splice(from, 1)[0]);
+};
+
 //Initiate manager-specific functions, refreshStuff() for refreshing avatar data
 function refreshStuff(){
     $.ajax({ //Post to bonk servers with login details
@@ -87,7 +92,7 @@ function refreshSkins(){
         $('.txt-skin2').show();
         $.each(skindata, function(index, item) {
             console.log(item);
-            $('.skincont').append(`<div class="skinslot" data-skin="${index}" style="animation:none"><img class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=${encodeURIComponent(item.avatar)}" type="image/svg+xml" style="width:48px;height:48px;display:inline-block;vertical-align:middle;box-shadow:none;margin:0px 15px;border: 3px #8e0241 solid;"><span>${item.name}</span></div>`);
+            $('.skincont').append(`<div class="skinslot" id="${index}" data-skin="${index}" style="animation:none"><img class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=${encodeURIComponent(item.avatar)}" type="image/svg+xml" style="width:48px;height:48px;display:inline-block;vertical-align:middle;box-shadow:none;margin:0px 15px;border: 3px #8e0241 solid;"><span>${item.name}</span></div>`);
         });
     } else { //Otherwise just show the no saved skins message.
         $('.txt-skin2').hide();
@@ -128,7 +133,7 @@ if(window.location.hash) {
         $('#button').hide();
         $('.sharedname').text(decodeURIComponent(shareddata[0])); //Show metadata of the skin 
         $('.sharedby').text(decodeURIComponent(shareddata[1]));
-        $('#sharedimg').attr('src',`http://finbae.co.uk/bl/prevgen.php?t=${shareddata[0]}&b=${shareddata[1]}&skinCode=${shareddata[2]}`); //Render shared image of the skin
+        $('#sharedimg').attr('src',`${prevgenurl}?t=${shareddata[0]}&b=${shareddata[1]}&skinCode=${shareddata[2]}`); //Render shared image of the skin
         $('#shared').slideDown();
     }
 }
@@ -264,7 +269,7 @@ $('#shrskin').click(function(){
     $('#sknshrlink').removeClass('disabled');
     $('#sknshrlink').text('Get Skin Sharing link (recommended)');
     //Generate a skin preview image for the data.
-    $('#genskni').attr('src',`http://finbae.co.uk/bl/prevgen.php?t=${encodeURIComponent(skntoUse.name)}&b=${tmpname}&skinCode=${encodeURIComponent(skntoUse.avatar)}`);
+    $('#genskni').attr('src',`${prevgenurl}?t=${encodeURIComponent(skntoUse.name)}&b=${tmpname}&skinCode=${encodeURIComponent(skntoUse.avatar)}`);
     $('#shareskin').slideDown();
 });
 
@@ -369,6 +374,29 @@ $('.cancel').click(function(){
     $('#'+$(this).data('cancel')).slideUp(); //Close appropriate page
     $('#loggedin').slideDown();
 });
+
+/*Drag-and-drop skin slot functionality for the logged in page
+$('.skincont').sortable({
+    items: ".skinslot",
+    tolerance: "pointer",
+    placeholder: "sort-placeholder",
+    opacity: 0.6,
+    forcePlaceholderSize: true,
+    start: function (event, ui) {
+        $(ui.helper).css({
+            'width': $(ui.helper).width() + 1
+        });
+    },
+    update: function(event, ui) {
+        var sortarray = $('.skincont').sortable('toArray');
+        $.each(skindata, function(index, item) {
+            skindata = skindata.move(index, sortarray[index]);
+        });
+        console.log(skindata);
+        //localStorage.setItem("skindata", JSON.stringify(skindata)); //Update in localstorage
+    }
+});
+$('.skincont').disableSelection();*/
 
 //When the login button is clicked on the homepage
 $('#button').click(function(){
