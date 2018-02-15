@@ -266,6 +266,7 @@ select:focus{
 }
 ::-webkit-scrollbar{
     width:7px;
+    height:7px;
     overflow:overlay;
 }
 input[type=text],input[type=password]{
@@ -314,4 +315,26 @@ input[type=text].disabled,input[type=password].disabled{
     font-size:24px;
     text-align:center;
     width:100%;
+}
+.flex-grid {
+    display: flex;
+    flex-wrap:wrap;
+}
+.col {
+    flex:1;
+    text-align:center;
+    padding:0 20px;
+    margin-bottom:40px;
+}
+.statstxtclip{
+    line-height:22px;
+    max-height:66px;
+    overflow:hidden;
+}
+.statstxtclip:hover{
+    max-height:9999px;
+}
+::selection {
+    color: #111; 
+    background: #ff2d8b;
 }

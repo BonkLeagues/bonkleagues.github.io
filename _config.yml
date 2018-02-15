@@ -4,7 +4,7 @@ defaults:
       title: 'Bonk Leagues'
       shorttitle: 'Bonk Leagues'
       layout: 'default'
-      desc: 'Bonk Leagues - a custom client, skin editor and more for http://bonk.io/'
+      desc: 'Bonk Leagues - the best tools for bonk.io, featuring a skin manager, XP checker and more for http://bonk.io/'
       canonical: 'https://bonkleagues.github.io/'
       sel: 'home'
       scriptToUse: 'script'

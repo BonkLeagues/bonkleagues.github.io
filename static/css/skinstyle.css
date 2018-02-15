@@ -366,5 +366,10 @@ hr{
 }
 ::-webkit-scrollbar{
     width:7px;
+    height:7px;
     overflow:overlay;
+}
+::selection {
+    color: #111; 
+    background: #ff2d8b;
 }

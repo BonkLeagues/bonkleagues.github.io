@@ -18,22 +18,25 @@ scriptToUse: 'qpscript'
 </style>
 <span class="parthead">Maps Currently Featured in Quick Play Rotation</span><br/><br/>
 
-<div id="loaded" style="display:none;">
-    <b>Showing <span id="mapnum">0</span> maps:</b><br/><i style="font-size:12px;">(TIP: you can use CTRL+F to search!)</i>
-    <br/><br/>
-    Sort: 
-    <select id="sel1">
-        <option value="default" selected>Default</option>
-        <option value="ldratio">L/D Ratio</option>
-        <option value="date">Creation Date</option>
-    </select>
-    <select id="sel2">
-        <option value="des">Descending &#9660;</option>
-        <option value="asc" selected>Ascending &#9650;</option>
-    </select>
-    <br/><br/><hr/></ht><br/>
-</div>
-
 <div id="loading" style="width:200px;text-align:left;white-space: nowrap;margin:0 auto;text-align:center;">loading...</div>
 
-<div id="loadedcont" style="width:400px;text-align:left;white-space: nowrap;margin:0 auto;display:none"></div>
+<div id="loaded" style="display:none;">
+    <div id="sorthold" style="margin-bottom:30px;">
+        Sort: 
+        <select id="sel1">
+            <option value="default" selected>Default</option>
+            <option value="ldratio">L/D Ratio</option>
+            <option value="date">Creation Date</option>
+        </select>
+        <select id="sel2">
+            <option value="des">Descending &#9660;</option>
+            <option value="asc" selected>Ascending &#9650;</option>
+        </select>
+    </div>
+    <button id="statstoggle" class="button" style="font-size:20px;padding:8px 15px;animation:none;margin-left:0;margin-bottom:20px;">Show advanced stats</button>
+    <br/><hr/><br/>
+
+    <b>Showing <span id="mapnum">0</span> maps:</b><br/><i style="font-size:12px;" id="ctrlftip">(TIP: you can use CTRL+F to search!)</i><br/><br/>
+</div>
+
+<div id="loadedcont" style="text-align:center;max-width:100%;width:100%;white-space: nowrap;margin:0 auto;display:none"></div>
