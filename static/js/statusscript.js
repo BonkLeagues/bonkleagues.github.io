@@ -21,3 +21,15 @@ $.ajax({
 setInterval(function(){
     location.reload();
 },20000);
+
+function getQueryVariable(variable,og) { //Used to extract variables from returned bonk.io info
+    var query = og;
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
