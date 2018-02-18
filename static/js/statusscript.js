@@ -1,4 +1,5 @@
-var lastoutage = timeSince(new Date(Date.UTC(2018, 1, 17, 20, 5, 0)));
+//var lastoutage = timeSince(new Date(Date.UTC(2018, 1, 17, 20, 5, 0)));
+var lastoutage = false;
 
 $.ajax({
     type: "POST",
