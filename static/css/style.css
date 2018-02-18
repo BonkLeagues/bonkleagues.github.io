@@ -12,7 +12,7 @@ header{
     text-align:center;
     color:#fb016e;
     padding:30px 0;
-    font-family:'VT323', monospace;
+    font-family:'VT323', 'Consolas', monospace;
     user-select: none;
     padding-bottom:40px;
     z-index:999;
@@ -85,7 +85,7 @@ nav .sel{
 }
 section{
     color:#ccc;
-    font-family:monospace;
+    font-family:'Consolas', monospace;
     text-align:center;
     font-size:18px;
     padding:0 20px;
@@ -101,7 +101,7 @@ section a, #cusa{
     display:inline-block;
     font-size:28px;
     padding:4px 10px;
-    font-family:'VT323', monospace;
+    font-family:'VT323', 'Consolas', monospace;
     text-transform:uppercase;
 }
 ul{
@@ -118,7 +118,7 @@ ul li{
     text-decoration:none;
     color:#111;
     padding:15px 30px;
-    font-family:'VT323', monospace;
+    font-family:'VT323', 'Consolas', monospace;
     text-transform:uppercase;
     margin-left:10px;
     display:inline-block;
@@ -224,7 +224,7 @@ select{
     font-size:20px;
     text-decoration:none;
     color:#111;
-    font-family:'VT323', monospace;
+    font-family:'VT323', 'Consolas', monospace;
     text-transform:uppercase;
     margin-left:10px;
     display:inline-block;
@@ -240,7 +240,7 @@ select:focus{
 }
 #adbnote{
     display:none;
-    font-family:'VT323', monospace;
+    font-family:'VT323', 'Consolas', monospace;
     color:#fb016e;
     max-width:400px;
     margin:0 auto;
@@ -252,7 +252,7 @@ select:focus{
 #e404{
     color:#111;
     font-size:200px;
-    font-family:'VT323', monospace;
+    font-family:'VT323', 'Consolas', monospace;
     text-shadow: 0px 0px 15px rgba(251, 1, 110, 1);
 }
 ::-webkit-scrollbar-button, ::-webkit-scrollbar-track{
@@ -275,7 +275,7 @@ input[type=text],input[type=password]{
     text-decoration:none;
     color:#111;
     padding:5px 10px;
-    font-family:'VT323', monospace;
+    font-family:'VT323', 'Consolas', monospace;
     margin-left:5px;
     display:inline-block;
     box-shadow:5px 5px 0px 0px #777;
@@ -309,7 +309,7 @@ input[type=text].disabled,input[type=password].disabled{
 #outerprogress span{
     position:absolute;
     vertical-align:top;
-    font-family:'VT323', monospace;
+    font-family:'VT323', 'Consolas', monospace;
     top:4px;
     left:0px;
     font-size:24px;
