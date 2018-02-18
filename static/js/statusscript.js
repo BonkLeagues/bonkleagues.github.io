@@ -22,6 +22,9 @@ $.ajax({
     
         $('#status-db').text('ONLINE'); 
         $('#status-db').addClass('cgr');
+
+        document.title = 'ONLINE | Bonk.io Server Status';
+        changeFavicon('/static/img/icons/green.ico');
     } else {
         $('#status').text('DOWN');
         $('#status').addClass('cre');
@@ -36,6 +39,9 @@ $.ajax({
             $('#downholder').show();
             $('#downtime').text(lastoutage);
         }
+        
+        document.title = 'DOWN | Bonk.io Server Status';
+        changeFavicon('/static/img/icons/red.ico');
     } //Show error when nessicary
 })
 .fail(function(e){
@@ -47,6 +53,9 @@ $.ajax({
 
     $('#status-db').text('UNKNOWN (PROBABLY DOWN)'); 
     $('#status-db').addClass('cre');
+
+    document.title = 'DOWN | Bonk.io Server Status';
+    changeFavicon('/static/img/icons/red.ico');
 });
 
 setInterval(function(){
@@ -87,4 +96,15 @@ function timeSince(date) {
     return interval + " minutes";
     }
     return (seconds).toFixed(1) + " seconds";
+}
+function changeFavicon(src) {
+    var link = document.createElement('link'),
+    oldLink = document.getElementById('dynamic-favicon');
+    link.id = 'dynamic-favicon';
+    link.rel = 'shortcut icon';
+    link.href = src;
+    if (oldLink) {
+        document.head.removeChild(oldLink);
+    }
+    document.head.appendChild(link);
 }
