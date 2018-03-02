@@ -1,4 +1,4 @@
-var lastoutage = timeSince(new Date(Date.UTC(2018, 2,  1, 21, 33, 0)));
+var lastoutage = timeSince(new Date(Date.UTC(2018, 2,  2, 00, 21, 0)));
                                            //year,m-1, da, ho, mi, s
 //var lastoutage = false;
 
