@@ -13,10 +13,10 @@
         <meta property="og:url" content="{{ page.canonical }}" />
         <meta property="og:site_name" content="Bonk Leagues" />
         <meta property="og:image" content="https://bonkleagues.github.io/static/img/logo.png" />
-        <meta name="theme-color" content="#013e79">
+        <meta name="theme-color" content="#fb016e">
 
         <link rel="icon" type="image/png" href="/static/img/logo.png">
-        <link rel='stylesheet' type='text/css' href='/static/css/{{ page.styleToUse }}.css#27'>
+        <link rel='stylesheet' type='text/css' href='/static/css/{{ page.styleToUse }}.css#28'>
 
         {% if page.sel == 'skins' %}
         <link rel='stylesheet' type='text/css' href='/static/css/jquery-ui.min.css'>
@@ -57,7 +57,7 @@
         <header>
             <a href="/" id="defaulta">
                 <img src="/static/img/logo.png" id="logo" draggable="false">
-                <h1>{{ page.shorttitle }}<span id="typing">_</span>{% if page.sel == 'skins' %}<span style="font-size:18px;vertical-align:top">v3.2</span>{% endif %}</h1>
+                <h1>{{ page.shorttitle }}<span id="typing">_</span>{% if page.sel == 'skins' %}<span style="font-size:18px;vertical-align:top">v4.0</span>{% endif %}</h1>
             </a>
             <br/>
             <nav>
@@ -77,3 +77,4 @@
             </nav>
         </header>
         <section>
+                <span style="position:absolute;top:0;left:0;width:100%;background:red;color:#111;"><b>Important: </b>we are currently having (hopefully temporary) server issues with Bonk Leagues CORS-enabled requests, meaning the Skin Manager, XP checker, etc. is DOWN.<br/>We will keep you updated in the Bonk Leagues Discord server.</span>
