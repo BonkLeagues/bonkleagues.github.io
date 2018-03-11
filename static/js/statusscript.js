@@ -1,6 +1,6 @@
-var lastoutage = timeSince(new Date(Date.UTC(2018, 2,  2, 00, 21, 0)));
+//var lastoutage = timeSince(new Date(Date.UTC(2018, 2,  1, 21, 33, 0)));
                                            //year,m-1, da, ho, mi, s
-//var lastoutage = false;
+var lastoutage = false;
 
 $.ajax({
     type: "POST",
@@ -38,7 +38,7 @@ $.ajax({
         $('#status-db').addClass('cre');
     
         if(lastoutage){
-            console.log(1);
+            //console.log(1);
             $('#downholder').show();
             $('#downtime').text(lastoutage);
         }
