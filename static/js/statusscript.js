@@ -2,10 +2,13 @@
                                            //year,m-1, da, ho, mi, s
 var lastoutage = false;
 
+
+var startReqTime = new Date();
 $.ajax({
     type: "POST",
     url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account5.php",
     dataType: "text",
+    timeout: 15000,
     data: {
         friendtoadd: 'Finbae',
         ignorethis: 69696,
@@ -14,56 +17,83 @@ $.ajax({
         username: '5',
         password: 'e4da3b7fbbce2345d7772b0674a318d5'
     }})
-.done(function(meme){
+.done(function(meme, useless, reqInfo){
+    console.log(reqInfo);
+    devOutput('Response body:\n' + meme, `${reqInfo.status} ${reqInfo.statusText}`);
     if(getQueryVariable('code',meme) == '0'){ //If response is valid, continue and get name
-        $('#status').addClass('cgr');
-        $('#status').text('ONLINE');
-        
-        $('#status-web').text('ONLINE'); 
-        $('#status-web').addClass('cgr');
-    
-        $('#status-db').text('ONLINE'); 
-        $('#status-db').addClass('cgr');
-
-        document.title = 'ONLINE | Bonk.io Server Status';
-        changeFavicon('/static/img/icons/green.ico');
+        setState('overallStatusBN','online');
+        setState('statusBN-web','online');
+        setState('statusBN-db','online');
+        setState('overallStatusBL','online');
     } else {
-        $('#status').text('DOWN');
-        $('#status').addClass('cre');
-
-        $('#status-web').text('ONLINE'); 
-        $('#status-web').addClass('cgr');
-    
-        $('#status-db').text('DOWN'); 
-        $('#status-db').addClass('cre');
-    
-        if(lastoutage){
-            //console.log(1);
+        setState('overallStatusBN','online');
+        setState('statusBN-web','online');
+        setState('statusBN-db','online');
+        setState('overallStatusBL','down');
+        /*if(lastoutage){
             $('#downholder').show();
             $('#downtime').text(lastoutage);
-        }
-        
-        document.title = 'DOWN | Bonk.io Server Status';
-        changeFavicon('/static/img/icons/red.ico');
+        }*/
+        $('#extrainfo').show();
     } //Show error when nessicary
 })
-.fail(function(e){
-    $('#status').text('DOWN'); 
-    $('#status').addClass('cre');
+.fail(function(e,txtStat){
+    if(txtStat == 'timeout'){
+        devOutput('Connection timed out (after 15000ms)\n\nThis is a preset message, no response body actually received.', '503 TIMEOUT');
+        setState('overallStatusBN','unknown');
+        setState('statusBN-web','unknown');
+        setState('statusBN-db','unknown');
+        setState('overallStatusBL','timedout');
+    } else {
+        devOutput('Could not connect to servers AT ALL.\n\nThis is a preset message, no response body actually received.', 'NONE');
+        setState('overallStatusBN','down');
+        setState('statusBN-web','down');
+        setState('statusBN-db','unknown');
+        setState('overallStatusBL','online');
+    }
+});
 
-    $('#status-web').text('DOWN'); 
-    $('#status-web').addClass('cre');
+function setState(container, state){
+    switch(state){
+        case 'down':
+            $('#'+container).text('DOWN'); 
+            $('#'+container).addClass('cre');
+            break;
+        case 'online':
+            $('#'+container).text('ONLINE'); 
+            $('#'+container).addClass('cgr');
+            break;
+        case 'unknown':
+            $('#'+container).text('UNKNOWN'); 
+            $('#'+container).addClass('cdg');
+            break;
+        case 'timedout':
+            $('#'+container).text('TIMED OUT (DOWN)'); 
+            $('#'+container).addClass('cor');
+            $('#extrainfo').show();
+            break;
+    }
+    $('.toHide').hide();
+    if(container == 'overallStatusBN'){
+        document.title = state.toUpperCase() + ' | Bonk.io Server Status';
+        changeFavicon('/static/img/icons/'+ state +'.ico');
+    }
+}
 
-    $('#status-db').text('UNKNOWN (PROBABLY DOWN)'); 
-    $('#status-db').addClass('cre');
+function devOutput(txt, rcode){
+    txt = `[ Response code: ${rcode} | Took: ${new Date() - startReqTime}ms ]\n\n${txt}`;
+    $('#devOutput').text(txt);
+}
 
-    document.title = 'DOWN | Bonk.io Server Status';
-    changeFavicon('/static/img/icons/red.ico');
+$('#devBtn').click(function(){
+    $('#devDetails').toggle();
 });
 
 setInterval(function(){
     location.reload();
-},20000);
+},40000);
+
+
 
 function getQueryVariable(variable,og) { //Used to extract variables from returned bonk.io info
     var query = og;
