@@ -12,7 +12,7 @@
             </script>
             <div id="adbnote">It looks like you have an ad-blocker on.<br/><br/><b>To help support the development of Bonk Leagues and the Skin Manager, we'd like it if you would disable it &lt;3.</b></div>
 
-            <div class="remodal" data-remodal-id="modal">
+            <div class="remodal remodaldiscord" data-remodal-id="remodaldiscord">
                 <button data-remodal-action="close" class="remodal-close"></button>
                 <h1 class="parthead">Join our Discord server!</h1>
                 <p>We have now opened our official Bonk Leagues Discord server!</p>
@@ -24,35 +24,72 @@
                 <a style="text-decoration:underline;cursor:pointer;" data-remodal-action="cancel" id="cusa">Don't show me this again</a>
             </div>
 
-            <span style="position:fixed;bottom:15px;right:15px;font-size:16px;z-index:998;">website by Finbae<span style="font-size:11px;color:#666;">#2180</span></span>   
+            <div class="remodal remodalupdate" style="padding:0" data-remodal-id="remodalupdate">
+                <button data-remodal-action="close" class="remodal-close"></button>
+                <img src="/static/img/30-03-2018_changelog.jpg" style="max-width:700px">
+            </div>
+
+            <span style="position:fixed;bottom:15px;right:15px;font-size:16px;z-index:998;">website by Finbae<span style="font-size:11px;color:#666;">#1155</span></span>   
         </section>
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
         <script src="/static/js/bab.js"></script>
         <script src="/static/js/blockdetect.js"></script>
         {% if page.sel == 'skins' %}
-        <script src="/static/js/jquery-ui.min.js"></script>
+        <script src="/static/js/jquery-ui.min.js#1"></script>
         <script src="/static/js/md5.js"></script>
         <script src="/static/js/jscolor.min.js"></script>
+        <script src="/static/js/tag-it.min.js"></script>
         <script src="/static/js/skineditor.js#20"></script>
         {% endif %}
-        <script src="/static/js/{{ page.scriptToUse }}.js#36"></script>
+        <script src="/static/js/{{ page.scriptToUse }}.js#37"></script>
         <script src="/static/js/remodal.js"></script>
         <script>
             setTimeout(function(){
                 if(!getCookie('mdis')){
-                    var inst = $('[data-remodal-id=modal]').remodal({hashTracking:false});
+                    var inst = $('[data-remodal-id=remodaldiscord]').remodal({hashTracking:false});
                     inst.open();
+                } else if(!getCookie('mdisupdate1')) {
+                    if ($(window).width() > 600) {
+                        var inst = $('[data-remodal-id=remodalupdate]').remodal({hashTracking:false});
+                        inst.open();
+                    }
                 }
             },6500);
-            $(document).on('confirmation', '.remodal', function () {
-                document.cookie = "mdis=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+
+            $(document).on('confirmation', '.remodaldiscord', function () {
+                setCookie('mdisupdate1', 'true', 365);
+                setCookie('mdis', 'true', 365);
             });
-            $(document).on('cancellation', '.remodal', function () {
-                document.cookie = "mdis=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+            $(document).on('cancellation', '.remodaldiscord', function () {
+                setCookie('mdisupdate1', 'true', 365);
+                setCookie('mdis', 'true', 365);
             });
-            window.getCookie = function(name) {
-                match = document.cookie.match(new RegExp(name + '=([^;]+)'));
-                if (match) return match[1];
+
+            $(document).on('closing', '.remodalupdate', function () {
+                setCookie('mdisupdate1', 'true', 365);
+            });
+
+            function setCookie(name,value,days) {
+                var expires = "";
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days*24*60*60*1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+            }
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+            }
+            function eraseCookie(name) {   
+                document.cookie = name+'=; Max-Age=-99999999;';  
             }
         </script>
     </body>

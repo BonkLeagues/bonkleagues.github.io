@@ -6,7 +6,7 @@ var lastoutage = false;
 var startReqTime = new Date();
 $.ajax({
     type: "POST",
-    url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account5.php",
+    url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account6.php",
     dataType: "text",
     timeout: 15000,
     data: {

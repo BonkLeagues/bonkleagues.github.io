@@ -1,0 +1,87 @@
+ul.tagit {
+    overflow: auto;
+    border-radius:0;
+    margin: 0;
+    margin-bottom: 5px;
+    vertical-align: middle;
+}
+ul.tagit li {
+    display: block;
+    float: left;
+}
+ul.tagit li.tagit-choice {    
+    position: relative;
+    line-height: inherit;
+}
+input.tagit-hidden-field {
+    display: none;
+}
+ul.tagit li.tagit-choice a.tagit-label {
+    cursor: pointer;
+    text-decoration: none;
+}
+ul.tagit li.tagit-choice .tagit-close {
+    cursor: pointer;
+    position: absolute;
+    right: .1em;
+    top: 50%;
+    margin-top: -12px;
+    width:100%;
+    line-height: 17px;
+    height:100%;
+}
+
+.ui-icon-close{
+    display:none;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active{
+    background:#fb016e;
+    color:#111;
+    margin-right:3px;
+    padding:1px 4px;
+    vertical-align:middle;
+}
+
+/* used for some custom themes that don't need image icons */
+ul.tagit li.tagit-choice .tagit-close .text-icon {
+    display: none;
+}
+
+ul.tagit li.tagit-choice input {
+    display: block;
+    float: left;
+    margin: 2px 5px 2px 0;
+}
+ul.tagit input[type="text"] {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: inherit;
+    background-color: inherit;
+    outline: none;
+}
+.ui-autocomplete {
+    background:#fb016e !important;
+    box-shadow:5px 5px 0px 0px #b30050, 2px 2px 20px 0px #fff;
+    border:0 !important;
+    color:#111;
+    font-size:21px;
+    font-family:'VT323', 'Consolas', monospace !important;
+}
+.ui-menu-item{
+    border-bottom:1px solid #b30050;
+}
+.ui-state-hover, .ui-state-active {
+    background:#b30050 !important;
+    border:1px solid #b30050 !important;
+    color:#111 !important;
+}

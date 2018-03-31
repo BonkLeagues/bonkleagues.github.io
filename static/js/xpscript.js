@@ -9,7 +9,7 @@ $('#check').click(function(){
             
             $.ajax({ //Post to bonk servers with username information to get case-insensitive value
                 type: "POST",
-                url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account5.php",
+                url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account6.php",
                 dataType: "text",
                 data: {
                     friendtoadd: $('#un').val().split(',')[0],
@@ -82,3 +82,10 @@ function getQueryVariable(variable,og) { //Used to extract variables from return
     }
     console.log('Query variable %s not found', variable);
 }
+
+//Enter to submit thingies
+$("#un").keyup(function (event) {
+    if (event.keyCode === 13) {
+        $("#check").click();
+    }
+});

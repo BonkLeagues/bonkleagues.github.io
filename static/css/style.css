@@ -152,7 +152,7 @@ ul li{
     cursor:pointer;
     margin-right:10px;
     margin-bottom:10px;
-    max-width:350px;
+    max-width:325px;
 }
 .homethumb:hover{
     transform: scale(1.02);

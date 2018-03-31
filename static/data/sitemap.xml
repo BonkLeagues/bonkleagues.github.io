@@ -7,31 +7,43 @@
 
 <url>
   <loc>https://bonkleagues.github.io/</loc>
-  <lastmod>2018-01-27T12:14:54+00:00</lastmod>
+  <lastmod>2018-03-27T12:14:54+00:00</lastmod>
   <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://bonkleagues.github.io/client.html</loc>
-  <lastmod>2018-01-27T12:14:54+00:00</lastmod>
+  <loc>https://bonkleagues.github.io/editor.html</loc>
+  <lastmod>2018-03-27T12:14:54+00:00</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bonkleagues.github.io/skins.html</loc>
-  <lastmod>2018-01-27T12:14:54+00:00</lastmod>
+  <lastmod>2018-03-27T12:14:54+00:00</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bonkleagues.github.io/quickplay.html</loc>
-  <lastmod>2018-01-27T12:14:54+00:00</lastmod>
+  <lastmod>2018-03-27T12:14:54+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bonkleagues.github.io/serverstatus.html</loc>
+  <lastmod>2018-03-27T12:14:54+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bonkleagues.github.io/xpchecker.html</loc>
+  <lastmod>2018-03-27T12:14:54+00:00</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bonkleagues.github.io/more.html</loc>
-  <lastmod>2018-01-27T12:14:54+00:00</lastmod>
+  <lastmod>2018-03-27T12:14:54+00:00</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.60</priority>
 </url>
