@@ -288,7 +288,8 @@ function refreshSkins(tabToUse) {
                     }
                 } else { console.log('skipped this skin'); }
             });
-        } catch {
+        } catch (e) {
+            console.error(e);
             outputCorruptSkins();
         }
     } else { //Otherwise just show the no saved skins message.
