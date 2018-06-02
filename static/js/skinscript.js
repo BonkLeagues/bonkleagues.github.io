@@ -304,6 +304,7 @@ function refreshSkins(tabToUse) {
 
 //... and getSamples() for getting a certain page of sample skins
 function getSamples(page) {
+    pgnum = page;
     $('.pg').removeClass('disabled'); //Remove disabled class from the page buttons (allowing clicking again)
     $('#smpskincont').html('');
     $.getJSON(`${ssbaseurl}category/${smpfiletouse}?p=${page}&seed=${seed}`, function (res) { //Get the sample skins json file
