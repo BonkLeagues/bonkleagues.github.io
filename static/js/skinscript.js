@@ -33,15 +33,18 @@ var stuff, skinchoice, skntoUse, skni, data, storeUn, storePw;
 var skindata = [];
 var smpfiletouse;
 var speccred = false;
-var pgnum = 1;
+var showExitModal = false;
+var pgnum = 0;
 var curTab = 'all';
 var drawnTabs = [];
 const prevgenurl = 'http://sebweb.co.uk/blbackend/prevgen.php';
+const ssbaseurl = 'https://bonkleaguebot.herokuapp.com/sample-skins/';
+const seed = Math.random();
 
 var devOfflineTestingMode = false;
 
 //Set up AJAX to not cache the sample skins
-$.ajaxSetup({ cache: false });
+//$.ajaxSetup({ cache: false });
 
 /*--------------------------------------------------------------
     Stage 2:
@@ -54,6 +57,7 @@ function errout(txt) {
     $('#errtxt').css({ 'font-style': 'normal', 'color': 'red', 'font-size': '15px' });
     $('#instructions').slideDown();
     $('#button').text('Login!');
+    $('#button').slideDown();
     step = 1;
 }
 
@@ -302,29 +306,24 @@ function refreshSkins(tabToUse) {
 function getSamples(page) {
     $('.pg').removeClass('disabled'); //Remove disabled class from the page buttons (allowing clicking again)
     $('#smpskincont').html('');
-    $.getJSON("static/data/sample-skins/" + smpfiletouse, function (res) { //Get the sample skins json file
-        if (data == null) { data = shuffle(res); } //If data from earlier is not already shuffled, shuffle it
+    $.getJSON(`${ssbaseurl}category/${smpfiletouse}?p=${page}&seed=${seed}`, function (res) { //Get the sample skins json file
+        //if (data == null) { data = shuffle(res); } //If data from earlier is not already shuffled, shuffle it
+        data = res;
         console.log(data);
-        var totpages = Math.ceil(data.length / 8); //Calculate total pages
 
-        if (page > totpages) { page = totpages; } //If there above or below max and min pages, fix that.
-        if (page < 1) { page = 1; }
+        if (!data.pageLeftEnabled) { $('#pgprev').addClass('disabled'); } //If on first page, disable previous page button, same goes for last page
+        if (!data.pageRightEnabled) { $('#pgnext').addClass('disabled'); }
+        $('#pgid').text(data.pageIndicator);
 
-        pgnum = page; //Set the page number to the retrieved page value
-
-        if (page == 1) { $('#pgprev').addClass('disabled'); } //If on first page, disable previous page button, same goes for last page
-        if (page == totpages) { $('#pgnext').addClass('disabled'); }
-        $('#pgid').text(page + '/' + totpages);
-
-        $.each(data.slice(8 * (page - 1), 8 * page), function (i, smskin) { //Iterate over all sample skins in chosen page range, creating a sample skin div.
-            $('#smpskincont').append(`<div class="sampleskin" data-smskin="${i + 8 * (page - 1)}"><img class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=${encodeURIComponent(smskin.avatar)}"><div><b>${smskin.name}</b><br/><i>by <b>${smskin.by}</b></i></div></div>`);
+        $.each(data.items, function (i, smskin) { //Iterate over all sample skins in chosen page range, creating a sample skin div.
+            $('#smpskincont').append(`<div class="sampleskin" data-smskin="${i}"><img class="sknframe" src="https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=${encodeURIComponent(smskin.avatar)}"><div><b>${smskin.name}</b><br/><i>by <b>${smskin.by}</b></i></div></div>`);
         });
     });
 }
 
 function getSampleCats() {
     $('#smpskincatcont').html('');
-    $.getJSON("static/data/categories.json", function (res) { //Get the sample skins json categories file
+    $.getJSON(ssbaseurl + 'categories', function (res) { //Get the sample skins json categories file
         console.log(res);
         $.each(res, function (i, smskin) { //Iterate over all sample skin categories in the file.
             $('#smpskincatcont').append(`<div class="choice smpskincatchoice" data-choice="${smskin.id}" data-nicename="${smskin.name}"><img src="static/img/icons/sample/${smskin.icon}" style="margin-right:15px" width="42"><div><b>${smskin.name}</b> Skins<br/><i>${smskin.count} skins in this category</i></div></div>`);
@@ -394,6 +393,14 @@ if (window.location.hash) {
     doRmLogin('loggedin');
 }
 
+window.onbeforeunload = function(e) {
+    if(showExitModal){
+        var dialogText = 'Warning: leaving the page may discard unsaved changes!';
+        e.returnValue = dialogText;
+        return dialogText;
+    }
+};
+
 //Button and other clicking functions now!
 
 //When yes on shared dialog is clicked
@@ -448,12 +455,12 @@ $('#logout').click(function(){
 
 //When a sample skin on sample skins page is clicked
 $(document).on("click", ".sampleskin", function () {
-    speccred = data[parseInt($(this).data('smskin'))].by; //Make sure OG skin creator's credit is credited
-    skinchoice = data[parseInt($(this).data('smskin'))].avatar;
+    speccred = data.items[parseInt($(this).data('smskin'))].by; //Make sure OG skin creator's credit is credited
+    skinchoice = data.items[parseInt($(this).data('smskin'))].avatar;
     $('#smpskins').slideUp(); //Set the data required for adding skin
     $('#sknframe2').attr('src', 'https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=' + encodeURIComponent(skinchoice));
     $('#sknframe4').attr('src', 'https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=' + encodeURIComponent(skinchoice));
-    $('#skn').val(data[parseInt($(this).data('smskin'))].name);
+    $('#skn').val(data.items[parseInt($(this).data('smskin'))].name);
     $('#addskin2').slideDown();
     $('#skn')[0].selectionStart = 0;
     $('#skn')[0].selectionEnd = $('#skn').val().length;
@@ -465,6 +472,7 @@ $(document).on("click", ".edit-btn", function () {
     skni = parseInt($(this).data('skin'));
     skntoUse = skindata[skni];
     var sknTagsTmp = [];
+    showExitModal = true;
     $('#skne').val(skntoUse.name);
     if(skntoUse.col){
         $('#sslotcol')[0].jscolor.fromString(skntoUse.col);
@@ -585,7 +593,8 @@ $(document).on("click", ".smpskincatchoice", function () {
     $('#smpskinscat').slideUp();
     $('#smpcatid').text($(this).data('nicename'));
     $('#smpskins').slideDown();
-    setTimeout(function () { getSamples(1) }, 500); //Delay getting samples straight away to stop animation lag
+    //getSamples(0);
+    setTimeout(function () { getSamples(0) }, 500); //Delay getting samples straight away to stop animation lag
 });
 
 //When a slot on add skin from slot page is clicked
@@ -750,6 +759,7 @@ $('#sknframe4,#overlay').click(function () {
 
 //When the save button on the edit skin page is clicked
 $('#edskin').click(function () {
+    showExitModal = false;
     skindata[skni].name = escapeHtml($('#skne').val());
     skindata[skni].tag = $('#skntags').tagit("assignedTags");
     skindata[skni].col = $('#sslotcol')[0].jscolor.toHEXString();
@@ -767,6 +777,7 @@ $('#delskin').click(function () {
         $('#editskin').slideUp();
         refreshSkins(); //Reload skin slot data
         $('#loggedin').slideDown();
+        showExitModal = false;
     }
 });
 

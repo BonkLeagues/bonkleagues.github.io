@@ -1,7 +1,0 @@
-[
-    { "name": "Emoji", "id": "emojis.json", "icon": "emojis.png", "count": 3 },
-    { "name": "Face", "id": "faces.json", "icon": "faces.png", "count": 4 },
-    { "name": "Logo", "id": "logos.json", "icon": "logos.png", "count": 8 },
-    { "name": "Object", "id": "objects.json", "icon": "objects.png", "count": 9 },
-    { "name": "Pattern/Shape", "id": "patterns.json", "icon": "patterns.png", "count": 13 }
-]
