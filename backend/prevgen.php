@@ -41,6 +41,9 @@ function create_image()
 
     imagerectangle($image, 0, 0, $width-1, $height-1, $blpink);
 
+    $watermark = imagecreatefrompng('watermark.png');
+    imagecopymerge_alpha($image, $watermark, $width - 21, 98, 0, 0, imagesx($watermark), imagesy($watermark), 100);
+
     header("Content-Type: image/png"); 
     imagepng($image); 
     imagedestroy($image); 
