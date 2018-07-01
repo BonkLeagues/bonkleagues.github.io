@@ -24,6 +24,12 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://bonkleagues.github.io/bonk_discord.html</loc>
+  <lastmod>2018-07-01T12:14:54+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://bonkleagues.github.io/quickplay.html</loc>
   <lastmod>2018-03-27T12:14:54+00:00</lastmod>
   <changefreq>weekly</changefreq>
