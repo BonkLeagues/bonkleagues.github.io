@@ -1,6 +1,6 @@
 //Adblock detection
 function adBlockDetected() {
-	$('#adbnote').show();
+	//$('#adbnote').show();
 }
 if(typeof blockAdBlock === 'undefined') {
 	adBlockDetected();
