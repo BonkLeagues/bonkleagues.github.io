@@ -101,7 +101,7 @@ function shuffle(array) { //Shuffle an array (used for sample skins)
 
 function download(content, fileName, contentType) { //BLOB download function
     var a = document.createElement("a");
-    var file = new Blob([content], {type: contentType});
+    var file = new Blob([content], { type: contentType });
     a.href = URL.createObjectURL(file);
     a.download = fileName;
     a.click();
@@ -153,27 +153,27 @@ function darkLightHex(c) {
 
 //Define various functions used for cookies
 
-function setCookie(name,value,days) {
+function setCookie(name, value, days) {
     var expires = "";
     if (days) {
         var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
 }
-function eraseCookie(name) {   
-    document.cookie = name+'=; Max-Age=-99999999;';  
+function eraseCookie(name) {
+    document.cookie = name + '=; Max-Age=-99999999;';
 }
 
 /*--------------------------------------------------------------
@@ -199,14 +199,14 @@ function refreshStuff(_callback) {
             }
             $('#bonkslotcont').html('');
             var tmpActiveCode = getQueryVariable('activeavatar', a);
-            if(tmpActiveCode == 0){ tmpActiveCode = 1; }
-            if(typeof(_callback) != 'function'){
-                for(avI = 1; avI <= 5; avI++){
-                    var tmpCodeThing = encodeURIComponent(getQueryVariable('avatar'+avI, a));
-                    if(tmpCodeThing){
+            if (tmpActiveCode == 0) { tmpActiveCode = 1; }
+            if (typeof (_callback) != 'function') {
+                for (avI = 1; avI <= 5; avI++) {
+                    var tmpCodeThing = encodeURIComponent(getQueryVariable('avatar' + avI, a));
+                    if (tmpCodeThing) {
                         var baseAvatarGen = 'https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=' + tmpCodeThing;
                         var otherStuff = '';
-                        if(tmpActiveCode == avI){
+                        if (tmpActiveCode == avI) {
                             otherStuff = '<br/><i>(Currently active)</i>';
                         }
                         $('#bonkslotcont').append(`<div class="choice bonkslotchoice" data-choice="avatar${avI}"><img src="${baseAvatarGen}" style="margin-right:15px" width="42"><div><b>Skin slot ${avI}</b>${otherStuff}</div></div>`);
@@ -220,7 +220,7 @@ function refreshStuff(_callback) {
 
 //... and refreshSkins() for refreshing skin slots
 function refreshSkins(tabToUse) {
-    if(!tabToUse){
+    if (!tabToUse) {
         tabToUse = 'all';
     }
     curTab = tabToUse;
@@ -237,20 +237,20 @@ function refreshSkins(tabToUse) {
         //('.txt-skin2').show();
         $('#tabCont').html('');
         drawnTabs = [];
-        try{
+        try {
             $.each(skindata, function (index, item) {
                 var toAddSkin = false;
 
-                if(tabToUse == 'all'){
+                if (tabToUse == 'all') {
                     $('.tabBtn').removeClass('tabSel');
                     $('#tabAll').addClass('tabSel');
                     toAddSkin = true;
                 }
-                if(item.tag){
-                    $.each(item.tag, function(index2, tag) { //Loop through tag array
-                        if(tag == tabToUse){ toAddSkin = true; }
-                        if($.inArray(tag,drawnTabs) == -1){
-                            if(tag == tabToUse){
+                if (item.tag) {
+                    $.each(item.tag, function (index2, tag) { //Loop through tag array
+                        if (tag == tabToUse) { toAddSkin = true; }
+                        if ($.inArray(tag, drawnTabs) == -1) {
+                            if (tag == tabToUse) {
                                 $('#tabCont').append(`<span class="parthead tabBtn tabSel" id="tab${index2}">${tag}</span>`);
                             } else {
                                 $('#tabCont').append(`<span class="parthead tabBtn" id="tab${index2}">${tag}</span>`);
@@ -260,7 +260,7 @@ function refreshSkins(tabToUse) {
                     });
                 }
 
-                if(toAddSkin){
+                if (toAddSkin) {
                     console.log(item);
                     $('.skincont').append(`<div class="skin" id="${index}">
                         <div class="container">
@@ -332,7 +332,7 @@ function getSampleCats() {
     });
 }
 
-function doRmLogin(nextLoc){
+function doRmLogin(nextLoc) {
     storeUn = getCookie('rmUn');
     storePw = getCookie('rmPw');
     statusout('Logging in with \'Remember Me\' data...');
@@ -340,7 +340,7 @@ function doRmLogin(nextLoc){
     $('#button').hide();
     $('#instructions').slideUp();
 
-    if(devOfflineTestingMode){
+    if (devOfflineTestingMode) {
         stuff = 'code=0&retreivedusername=DEV OFFLINE MODE&dbid=1';
         statusout('Logged in using development offline mode!');
         $('.s-name').text('DEV OFFLINE MODE');
@@ -360,17 +360,17 @@ function doRmLogin(nextLoc){
             password: storePw
         }
     })
-    .done(function (a) {
-        stuff = a;
-        if (getQueryVariable('code', stuff) == "0") { //If response is valid, show next screen and get info
-            statusout('Logged in!');
-            $('.s-name').text(getQueryVariable('retreivedusername', stuff));
-            refreshSkins(); //Refresh skinslot data
-            $('#button').slideUp();
-            $('#' + nextLoc).slideDown();
-        } else { errout('Failed to login with \'Remember Me\' data, please login manually.'); } //Show error when nessicary
-    })
-    .fail(function (e) { errout('Failed to login with \'Remember Me\' data, please login manually.'); }); //Error fallback
+        .done(function (a) {
+            stuff = a;
+            if (getQueryVariable('code', stuff) == "0") { //If response is valid, show next screen and get info
+                statusout('Logged in!');
+                $('.s-name').text(getQueryVariable('retreivedusername', stuff));
+                refreshSkins(); //Refresh skinslot data
+                $('#button').slideUp();
+                $('#' + nextLoc).slideDown();
+            } else { errout('Failed to login with \'Remember Me\' data, please login manually.'); } //Show error when nessicary
+        })
+        .fail(function (e) { errout('Failed to login with \'Remember Me\' data, please login manually.'); }); //Error fallback
 }
 
 /*--------------------------------------------------------------
@@ -390,12 +390,12 @@ if (window.location.hash) {
         $('#sharedimg').attr('src', `${prevgenurl}?t=${shareddata[0]}&b=${shareddata[1]}&skinCode=${shareddata[2]}`); //Render shared image of the skin
         $('#shared').slideDown();
     }
-} else if(getCookie('rmPw') != null){ //else if, check for remember me data
+} else if (getCookie('rmPw') != null) { //else if, check for remember me data
     doRmLogin('loggedin');
 }
 
-window.onbeforeunload = function(e) {
-    if(showExitModal){
+window.onbeforeunload = function (e) {
+    if (showExitModal) {
         var dialogText = 'Warning: leaving the page may discard unsaved changes!';
         e.returnValue = dialogText;
         return dialogText;
@@ -415,7 +415,7 @@ $('#sharedyes').click(function () { //Make sure that when logged in, it will sho
     $('#shared').slideUp();
     $('#button').slideDown();
 
-    if(getCookie('rmPw') != null){
+    if (getCookie('rmPw') != null) {
         doRmLogin('addskin2');
     }
 });
@@ -425,7 +425,7 @@ $('#sharedno').click(function () {
     $('#shared').slideUp();
     $('#button').slideDown();
 
-    if(getCookie('rmPw') != null){
+    if (getCookie('rmPw') != null) {
         doRmLogin('loggedin');
     }
 });
@@ -449,8 +449,8 @@ $('#pgprev').click(function () {
 });
 
 //When logout button clicked
-$('#logout').click(function(){
-    if(getCookie('rmPw') != null){ eraseCookie('rmUn'); eraseCookie('rmPw'); }
+$('#logout').click(function () {
+    if (getCookie('rmPw') != null) { eraseCookie('rmUn'); eraseCookie('rmPw'); }
     window.location = "skins.html";
 });
 
@@ -475,26 +475,26 @@ $(document).on("click", ".edit-btn", function () {
     var sknTagsTmp = [];
     showExitModal = true;
     $('#skne').val(skntoUse.name);
-    if(skntoUse.col){
+    if (skntoUse.col) {
         $('#sslotcol')[0].jscolor.fromString(skntoUse.col);
     } else {
         $('#sslotcol')[0].jscolor.fromString('#FB016E');
     }
-    if(skntoUse.tag){
+    if (skntoUse.tag) {
         sknTagsTmp = skntoUse.tag;
     }
     $('#sknframe').attr('src', 'https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=' + encodeURIComponent(skntoUse.avatar));
     $('#sknframe3').attr('src', 'https://bonkleaguebot.herokuapp.com/avatar.svg?skinCode=' + encodeURIComponent(skntoUse.avatar));
-    
+
     $("#skntags").tagit({
-        autocomplete: {delay: 0},
+        autocomplete: { delay: 0 },
         showAutocompleteOnFocus: true,
         allowSpaces: true,
         availableTags: drawnTabs
     });
     $("#skntags").tagit("removeAll");
-    sknTagsTmp.forEach(function(element) {
-        $("#skntags").tagit("createTag",element);
+    sknTagsTmp.forEach(function (element) {
+        $("#skntags").tagit("createTag", element);
     });
 
     $('#loggedin').slideUp();
@@ -534,7 +534,7 @@ $(document).on("click", ".upload-btn", function () {
             $(`.skin#${skni} .img`).append('<img class="icon spin" src="static/img/icons/loading.svg">');
             var toDisable = $(this);
 
-            refreshStuff(function(returnValue){
+            refreshStuff(function (returnValue) {
                 $.ajax({ //Post to Bonk servers with user data and avatar code to upload
                     type: "POST",
                     url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account6.php",
@@ -556,10 +556,12 @@ $(document).on("click", ".upload-btn", function () {
                         if (meme.includes("code=0")) { //If sucessful, show alert(), else show an error
                             toDisable.text('DONE!');
                             $(`.skin#${skni} .img`).append('<svg class="icon tick" version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle r="50" cx="50" cy="50" fill="#111"></circle><g transform="translate(-8.13172798366)"><rect id="check1" x="35.8578643763" y="50" width="10" height="0" transform="rotate(-45, 35.8578643763, 50) translate(-5, -2)" fill="#71d458"></rect><rect id="check2" x="64.1421356237" y="50" width="10" height="0" transform="rotate(225, 64.1421356237, 50) translate(-5, -25)" fill="#71d458"></rect></g></svg>');
-                            statusout('Skin uploaded to Bonk.io slot '+returnValue+' successfully! Please log-out and log back into Bonk again.');
+                            statusout('Skin uploaded to Bonk.io slot ' + returnValue + ' successfully! Please log-out and log back into Bonk again.');
                             setTimeout(function () {
                                 //$(`.skn .icon g`).append(`<rect id="check1" x="35.8578643763" y="50" width="10" height="0" transform="rotate(-45, 35.8578643763, 50) translate(-5, -2)" fill="#71d458"></rect>`);
                             }, 300);
+                        } else if (meme.includes("code=avatar_too_big")) {
+                            statusout('Error: Could not apply skin to bonk.io because your skin has too many layers! Bonk.io\'s limit is 16 layers maximum, so please remove some of your skin\'s shapes if you want to upload it.'); toDisable.text('ERROR');
                         } else { statusout('Error: Could not apply skin to bonk.io! This probably is a network error, or something similar.'); toDisable.text('ERROR'); }
                     })
                     .fail(function (e) { statusout('Error: Could not apply skin to bonk.io! This probably is a network error, or something similar.'); toDisable.text('ERROR'); });
@@ -625,7 +627,7 @@ $(document).on("click", ".sknframecus,#overlay", function () {
 //When a tab button is clicked
 $(document).on("click", ".tabBtn", function (e) {
     $('.tabBtn').removeClass('tabSel');
-    if($(this).text() != 'ALL SKINS'){
+    if ($(this).text() != 'ALL SKINS') {
         refreshSkins($(this).text());
     } else {
         refreshSkins('all');
@@ -646,7 +648,7 @@ $('#backupall').click(function () {
 //When the export skin button on backup page is clicked
 $('#exportbtn').click(function () {
     var d = new Date();
-    download(JSON.stringify(skindata), d.toDateString()+' Backup.blsm', 'text/plain');
+    download(JSON.stringify(skindata), d.toDateString() + ' Backup.blsm', 'text/plain');
     statusout('Backed-up successfully! Downloading file...');
 });
 
@@ -669,27 +671,27 @@ $(document).on("click", ".deleteallbtn", function () {
 });
 
 //When file attached to import section on backup page
-$("#importpicker").change(function(e){
+$("#importpicker").change(function (e) {
     var file = e.target.files[0];
-    if(file.name.endsWith('.blsm')){
+    if (file.name.endsWith('.blsm')) {
         var reader = new FileReader();
-        reader.onload = function() {
-            if(isJsonStrValid(reader.result)){
+        reader.onload = function () {
+            if (isJsonStrValid(reader.result)) {
                 var uploadDataToAdd = JSON.parse(reader.result);
-                $.each(uploadDataToAdd, function(index, item) { //Loop through sorted array
+                $.each(uploadDataToAdd, function (index, item) { //Loop through sorted array
                     skindata.push(item);
                 });
                 localStorage.setItem("skindata", JSON.stringify(skindata));
                 refreshSkins();
                 $('#importbtn').text('Import skins from a file');
                 $('#importbtn').removeClass('disabled');
-                statusout(uploadDataToAdd.length+' skins imported successfully!');
+                statusout(uploadDataToAdd.length + ' skins imported successfully!');
             } else { fileUploadFail(); }
         };
-        reader.onerror = function() {
+        reader.onerror = function () {
             fileUploadFail();
         }
-        reader.onloadstart = function() {
+        reader.onloadstart = function () {
             $('#importbtn').text('Reading skin file...');
         };
         reader.readAsText(file);
@@ -697,7 +699,7 @@ $("#importpicker").change(function(e){
 });
 
 //The file upload failed, cancel it.
-function fileUploadFail(){
+function fileUploadFail() {
     $('#importbtn').text('Import skins from a file');
     $('#importbtn').removeClass('disabled');
     statusout('Skin import failed, make sure your skin backup file is valid and the correct format.');
@@ -789,7 +791,7 @@ $('#resetcol').click(function () {
 
 //When the open in blse button on the edit skin page is clicked
 $('#openblse').click(function () {
-    var win = window.open('https://bonkleagues.github.io/editor.html?'+encodeURIComponent(skntoUse.avatar), '_blank');
+    var win = window.open('https://bonkleagues.github.io/editor.html?' + encodeURIComponent(skntoUse.avatar), '_blank');
     win.focus();
 });
 
@@ -820,7 +822,7 @@ $('.skinchoice').click(function () {
         getSampleCats();
     } else if ($(this).data('choice') == '4') { //Skin editor
         $('#addskin').slideUp();
-        setTimeout(function(){ window.location = 'editor.html'; }, 1000);
+        setTimeout(function () { window.location = 'editor.html'; }, 1000);
     }
 });
 
@@ -855,11 +857,11 @@ $('.skincont').sortable({
     handle: ".container",
     tolerance: "pointer",
     opacity: 0.6,
-    update: function(event, ui) {
-        if(curTab == 'all'){
+    update: function (event, ui) {
+        if (curTab == 'all') {
             var sortArray = $('.skincont').sortable('toArray');
             var tmpSorted = [];
-            $.each(sortArray, function(index, item) { //Loop through sorted array
+            $.each(sortArray, function (index, item) { //Loop through sorted array
                 tmpSorted.push(skindata[item]);
             });
             console.log(tmpSorted);
@@ -899,7 +901,7 @@ $('#button').click(function () {
                 .done(function (a) {
                     stuff = a;
                     if (getQueryVariable('code', stuff) == "0") { //If response is valid, show next screen and get info
-                        if($('#rm').is(':checked')){
+                        if ($('#rm').is(':checked')) {
                             setCookie('rmUn', storeUn, 30);
                             setCookie('rmPw', storePw, 30);
                         }
