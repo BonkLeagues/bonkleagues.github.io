@@ -101,10 +101,13 @@ function shuffle(array) { //Shuffle an array (used for sample skins)
 
 function download(content, fileName, contentType) { //BLOB download function
     var a = document.createElement("a");
+    a.setAttribute("type", "hidden");
     var file = new Blob([content], { type: contentType });
     a.href = URL.createObjectURL(file);
     a.download = fileName;
+    document.body.appendChild(a);
     a.click();
+    a.remove();
 }
 
 function outputCorruptSkins() { //Output corrupt skin data error message
