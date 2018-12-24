@@ -376,6 +376,7 @@ input:-webkit-autofill {
     font-size:40px;
     font-weight:normal;
     margin:0;
+    height:40px;
     font-family:'VT323', 'Consolas', monospace;
 }
 .sknframe{
