@@ -513,11 +513,63 @@ $(document).on("click", ".share-btn", function () {
     }
     $('#genskni-l').show();
     $('#genskni').hide();
-    $('#sknshrlink').removeClass('disabled');
-    $('#sknshrlink').text('Get Skin Sharing link (recommended)');
+    $('#genstats').hide();
     //Generate a skin preview image for the data.
     $('#genskni').attr('src', `${prevgenurl}?t=${encodeURIComponent(skntoUse.name)}&b=${tmpname}&skinCode=${encodeURIComponent(skntoUse.avatar)}`);
     $('#shareskin').slideDown();
+    $('#genlink').text('loading...');
+
+    $.ajax({ //Use Bit.ly API to generate a link
+        type: "GET",
+        url: "https://api-ssl.bitly.com/v3/shorten",
+        dataType: "json",
+        data: {
+            longUrl: `https://bonkleagues.github.io/skins.html#${encodeURIComponent(skntoUse.name)}|${tmpname}|${encodeURIComponent(skntoUse.avatar)}`,
+            login: 'finbae',
+            apiKey: 'R_5373fb46400847f6887462e6cfb9585c'
+        }
+    }).done(function (meme) {
+        var tmpname = encodeURIComponent(getQueryVariable('retreivedusername', stuff));
+        if (skntoUse.cred) {
+            tmpname = encodeURIComponent(skntoUse.cred);
+        }
+        $.ajax({ //Use Bit.ly API to shorten the URL used to add skins
+            type: "GET",
+            url: "https://api-ssl.bitly.com/v3/shorten",
+            dataType: "json",
+            data: {
+                longUrl: `https://bonkleagues.github.io/skins.html#${encodeURIComponent(skntoUse.name)}|${tmpname}|${encodeURIComponent(skntoUse.avatar)}`,
+                login: 'finbae',
+                apiKey: 'R_5373fb46400847f6887462e6cfb9585c'
+            }
+        }).done(function (meme) {
+            if (meme.status_code == 200) {
+                $('#genlink').html('<span style="font-size:14px;font-weight:bold;">To share this skin, copy & paste this link to a friend:</span><br/><br/><span style="color:#fb016e;font-weight:bold">' + meme.data.url + '</span>');
+
+                $.ajax({ //Use Bit.ly API to get link stats
+                    type: "GET",
+                    url: "https://api-ssl.bitly.com/v3/link/clicks",
+                    dataType: "json",
+                    data: {
+                        link: meme.data.url,
+                        access_token: 'cacbc15fe501e785cbefbf5e4ebd9ac2741e3b7a'
+                    }
+                }).done(function (meme2) {
+                    if (meme2.status_code == 200) {
+                        $('#genstatscount').text(meme2.data.link_clicks);
+                        $('#genstats').fadeIn();
+                    }
+                    console.log(meme2);
+                });
+            } else { //Otherwise show error
+                statusout('There was an error getting the skin sharing link. Sorry :/');
+            }
+            console.log(meme);
+        })
+        .fail(function (e) {
+            statusout('There was an error getting the skin sharing link. Sorry :/');
+        });
+    });
 });
 
 //When the upload button on a skin slot on logged in page is clicked
@@ -708,39 +760,7 @@ function fileUploadFail() {
 //When the share skin link button on share page is clicked
 $('#sknshrlink').click(function () {
     if (!$(this).hasClass('disabled')) {
-        $('#sknshrlink').addClass('disabled');
-        $('#sknshrlink').text('Please wait...');
-        var tmpname = encodeURIComponent(getQueryVariable('retreivedusername', stuff));
-        if (skntoUse.cred) {
-            tmpname = encodeURIComponent(skntoUse.cred);
-        }
-        $.ajax({ //Use Bit.ly API to shorten the URL used to add skins
-            type: "GET",
-            url: "https://api-ssl.bitly.com/v3/shorten",
-            dataType: "json",
-            data: {
-                longUrl: `https://bonkleagues.github.io/skins.html#${encodeURIComponent(skntoUse.name)}|${tmpname}|${encodeURIComponent(skntoUse.avatar)}`,
-                login: 'finbae',
-                apiKey: 'R_5373fb46400847f6887462e6cfb9585c'
-            }
-        })
-            .done(function (meme) {
-                if (meme.status_code == 200) { //If successful, prompt() with the link in box
-                    $('#sknshrlink').removeClass('disabled');
-                    $('#sknshrlink').text('Get Skin Sharing link (recommended)');
-                    prompt('Press CTRL+C to copy the skin sharing link! You can then send it to your friends so they can add your skin.', meme.data.url);
-                } else { //Otherwise show error
-                    statusout('There was an error getting the skin sharing link. Sorry :/');
-                    $('#sknshrlink').removeClass('disabled');
-                    $('#sknshrlink').text('Get Skin Sharing link (recommended)');
-                }
-                console.log(meme);
-            })
-            .fail(function (e) {
-                statusout('There was an error getting the skin sharing link. Sorry :/');
-                $('#sknshrlink').removeClass('disabled');
-                $('#sknshrlink').text('Get Skin Sharing link (recommended)');
-            }); //Error fallback
+        //
     }
 });
 
