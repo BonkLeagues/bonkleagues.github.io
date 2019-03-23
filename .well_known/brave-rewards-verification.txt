@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: bonkleagues.github.io
+Token: f0157b885fdb058aab74811946da0581043080430312fc6710a2a28d127bb8f5
