@@ -12,8 +12,7 @@
             </script>
             -->
             <div id="adbnote">It looks like you have an ad-blocker on.<br/><br/><b>To help support the development of Bonk Leagues and the Skin Manager, we'd like it if you would disable it &lt;3.</b></div>
-            <br/><hr/><br/>
-
+            <br/><br/>
             <footer>
                 <img src="/static/img/editor-logo.png" width="32"><br/>
                 <span style="font-size:10px;">
@@ -23,10 +22,11 @@
                 </span>
             </footer>
 
+            {% if page.title != 'Bonk.io Verifier' %}
             <div class="remodal remodaldiscord" data-remodal-id="remodaldiscord">
                 <button data-remodal-action="close" class="remodal-close"></button>
                 <h1 class="parthead">Join our Discord server!</h1>
-                <p>Chat with 2,800+ others in the official Bonk Leagues Discord server!</p>
+                <p>Chat with 4,000+ others in the official Bonk Leagues Discord server!</p>
                 <p>The biggest Bonk.io-related Discord. Join today.</p>
                 <br/>
                 <button data-remodal-action="confirm" onclick="window.open('https://discord.gg/RadQ7xx', '_blank');" class="remodal-confirm button">Join!</button>
@@ -34,6 +34,7 @@
                 <br/><br/>
                 <a style="text-decoration:underline;cursor:pointer;" data-remodal-action="cancel" id="cusa">Don't show me this again</a>
             </div>
+            {% endif %}
             <br/><br/>
 
             <!--
@@ -64,7 +65,7 @@
         <script src="/static/js/tag-it.min.js"></script>
         <script src="/static/js/skineditor.js#20"></script>
         {% endif %}
-        <script src="/static/js/{{ page.scriptToUse }}.js#44"></script>
+        <script src="/static/js/{{ page.scriptToUse }}.js#45"></script>
         <script src="/static/js/remodal.js"></script>
         <script>
             setTimeout(function(){
