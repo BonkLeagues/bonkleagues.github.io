@@ -1,7 +1,5 @@
             <br/>{% if page.sel != 'skins' %}<hr/><br/>{% endif %}
 
-            <img id="april" src="/static/img/april.gif" style="display:none">
-
             <!--
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                 <ins class="adsbygoogle"
@@ -81,35 +79,6 @@
                     }
                 }*/
             },6500);
-
-            if(!getCookie('afools19') || getCookie('afools19') == 'on'){
-                setCookie('afools19', 'on', 3);
-                afools19on();
-            } else {
-                afools19off();
-            }
-
-            $('#afoolstoggle').click(function(){
-                if(!getCookie('afools19') || getCookie('afools19') == 'on'){
-                    setCookie('afools19', 'off', 3);
-                    afools19off();
-                } else {
-                    setCookie('afools19', 'on', 3);
-                    afools19on();
-                }
-            });
-
-            function afools19on(){
-                $('#afools').removeProp('disabled');
-                $('#logo').prop('src', '/static/img/april-fools-logo.png');
-                $('#afoolstoggle').text('Disable April Fools UI');
-            }
-
-            function afools19off(){
-                $('#afools').prop('disabled', 'disabled');
-                $('#logo').prop('src', '/static/img/logo.png');
-                $('#afoolstoggle').text('Enable April Fools UI');
-            }
 
             $(document).on('confirmation', '.remodaldiscord', function () {
                 setCookie('mdisupdate1', 'true', 365);

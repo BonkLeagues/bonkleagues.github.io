@@ -18,9 +18,6 @@
         <link rel="icon" type="image/png" href="/static/img/logo.png">
         <link rel='stylesheet' type='text/css' href='/static/css/{{ page.styleToUse }}.css#31'>
 
-        <!-- APRIL FOOLS! -->
-        <link rel='stylesheet' type='text/css' id='afools' href='/static/css/april-fools.css' disabled>
-
         {% if page.sel == 'skins' %}
         <link rel='stylesheet' type='text/css' href='/static/css/jquery-ui.min.css#1'>
         <link rel='stylesheet' type='text/css' href='/static/css/jquery.tagit.css'>
@@ -70,7 +67,7 @@
         <header>
             <a href="/" id="defaulta">
                 <img src="/static/img/logo.png" id="logo" draggable="false">
-                <h1>{{ page.shorttitle }}<span id="typing"></span>{% if page.sel == 'skins' %}<span style="font-size:18px;vertical-align:top">v4.2</span>{% endif %}</h1>
+                <h1>{{ page.shorttitle }}<span id="typing">_</span>{% if page.sel == 'skins' %}<span style="font-size:18px;vertical-align:top">v4.2</span>{% endif %}</h1>
             </a>
             <br/>
             <nav>
@@ -86,8 +83,6 @@
                     </div>
                 </span>
                 <a href="/bonk_discord.html" id="discordlink"><i class="fab fa-discord"></i></a>
-                <br/><br/>
-                <a href="#" style="font-size:18px" id="afoolstoggle">Enable April Fools UI</a>
             </nav>
             <a href="/changelog.html" style="color:#fb016e;position:absolute;top:10px;right:10px;font-size:18px">CHANGELOG</a>
         </header>
