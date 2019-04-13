@@ -212,6 +212,28 @@ input:-webkit-autofill {
     vertical-align:middle;
     margin-right:20px;
 }
+#leftBan{
+    position:absolute;
+    top:155px;
+    left:10px;
+}
+#rightBan{
+    position:absolute;
+    top:155px;
+    right:10px;
+    background:red;
+}
+#pageCont{
+    margin:0px 180px;
+}
+@media screen and (max-width: 935px) {
+    #leftBan, #rightBan{
+        display:none;
+    }
+    #pageCont{
+        margin:0;
+    }
+}
 .skin{
     background:#fb016e;
     overflow:hidden;

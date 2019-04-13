@@ -826,7 +826,7 @@ $('.skinchoice').click(function () {
         $('#addskin').slideUp();
         $('#addskinslot').slideDown();
     } else if ($(this).data('choice') == '2') { //Skin code
-        speccred = false; //No special credit is currently nessicary
+        /*speccred = false; //No special credit is currently nessicary
         var tmpv = prompt('Paste skin code here:');
         if (tmpv != null) {
             skinchoice = tmpv;
@@ -838,7 +838,7 @@ $('.skinchoice').click(function () {
             $('#skn')[0].selectionStart = 0;
             $('#skn')[0].selectionEnd = $('#skn').val().length;
             $('#skn').focus();
-        }
+        }*/
     } else if ($(this).data('choice') == '3') { //Sample skins
         $('#addskin').slideUp();
         $('#smpskinscat').slideDown();
