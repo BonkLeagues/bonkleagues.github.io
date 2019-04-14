@@ -55,6 +55,11 @@
             </div>
             -->
         </section>
+
+        {% if page.specialAds == 'on' %}
+        </div>
+        {% endif %}
+
         <script src="/static/js/jquery.min.js"></script>
         <script src="/static/js/bab.js"></script>
         <script src="/static/js/blockdetect.js"></script>
@@ -64,7 +69,6 @@
         <script src="/static/js/jscolor.min.js"></script>
         <script src="/static/js/tag-it.min.js"></script>
         <script src="/static/js/skineditor.js#21"></script>
-        </div>
         {% endif %}
         <script src="/static/js/{{ page.scriptToUse }}.js#45"></script>
         <script src="/static/js/remodal.js"></script>
