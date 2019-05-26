@@ -106,7 +106,7 @@ specialAds: 'on'
         <br/>
         <a class="button pg" id="pgprev" style="font-size:24px;padding:5px 10px;animation:none;margin-right:20px;">&lt; Prev</a><b>Page <span id="pgid">x/x</span></b><a class="button pg" id="pgnext" style="font-size:24px;padding:5px 10px;animation:none;margin-left:20px;">Next &gt;</a>
         <br/><br/>
-        <a class="button cancel" data-cancel="smpskins" style="font-size:24px;padding:5px 10px;animation:none;margin-left:-5px;">Cancel</a><br/><br/>
+        <a class="button cancel" data-cancel="smpskins" data-open="smpskinscat" style="font-size:24px;padding:5px 10px;animation:none;margin-left:-5px;">Back</a><br/><br/>
         <p style="font-style:italic;font-size:12px">Info: We are currently not accepting any new submissions for Sample Skins as we are remaking the system. Sorry!</p>
     </div>
 
@@ -152,7 +152,7 @@ specialAds: 'on'
         <br/><br/>
         <span id="genskni-l">loading...</span>
         <img style="display:none;" id="genskni" onload="$('#genskni-l').hide();$('#genskni').fadeIn();">
-        
+
         <br/><br/>
         <a class="button cancel" data-cancel="shareskin" style="font-size:24px;padding:5px 10px;margin-left:-5px;animation:none">Back</a>
     </div>
@@ -174,7 +174,7 @@ specialAds: 'on'
         <input type="checkbox" id="rm" name="rm" class="cb">
         <label for="rm" class="cblabel">Remember me</label><br/><br/>
 
-        <p id="errtxt" style="font-style:italic;font-size:12px">Info: All requests are sent through bonk.io's servers (using a CORS proxy), and accessed client side with AJAX. Basically, <b>WE CANNOT SEE YOUR LOGIN DETAILS!</b></p>
+        <p id="errtxt" style="font-style:italic;font-size:12px"></p>
         <br/>
     </div>
     <a id="button" class="button" data-next="loggedin">Login with Bonk.io</a>

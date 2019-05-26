@@ -569,9 +569,9 @@ $(document).on("click", ".share-btn", function () {
             }
             console.log(meme);
         })
-        .fail(function (e) {
-            statusout('There was an error getting the skin sharing link. Sorry :/');
-        });
+            .fail(function (e) {
+                statusout('There was an error getting the skin sharing link. Sorry :/');
+            });
     });
 });
 
@@ -871,7 +871,11 @@ $('#svskin').click(function () {
 //When the cancel button is clicked on any page with a cancel button
 $('.cancel').click(function () {
     $('#' + $(this).data('cancel')).slideUp(); //Close appropriate page
-    $('#loggedin').slideDown();
+    if($(this).data('open')){
+        $('#' + $(this).data('open')).slideDown();
+    } else {
+        $('#loggedin').slideDown();
+    }
 });
 
 //Drag-and-drop skin slot functionality for the logged in page
@@ -906,37 +910,36 @@ $('#button').click(function () {
         step = 1;
     } else if (step == 1) { //On second click - verify login detail is correct and respond
         step = 2;
-        if ($('#un').val() && $('#pw').val()) { //If both boxes are not empty
-            $('#instructions').slideUp();
-            $('#button').text('Please wait...');
-            storeUn = $('#un').val();
-            storePw = $.md5($('#pw').val());
-            $.ajax({ //Post to bonk servers with login information
-                type: "POST",
-                url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account6.php",
-                dataType: "text",
-                data: {
-                    task: 1,
-                    username: storeUn,
-                    password: storePw
+        //if ($('#un').val() && $('#pw').val()) { //If both boxes are not empty
+        $('#instructions').slideUp();
+        $('#button').text('Please wait...');
+        storeUn = $('#un').val();
+        storePw = $.md5($('#pw').val());
+        $.ajax({ //Post to bonk servers with login information
+            type: "POST",
+            url: "https://bonkleaguebot.herokuapp.com/cors/physics/scripts/account6.php",
+            dataType: "text",
+            data: {
+                task: 1,
+                username: storeUn,
+                password: storePw
+            }
+        }).done(function (a) {
+            stuff = a;
+            if (getQueryVariable('code', stuff) == "0") { //If response is valid, show next screen and get info
+                if ($('#rm').is(':checked')) {
+                    setCookie('rmUn', storeUn, 30);
+                    setCookie('rmPw', storePw, 30);
                 }
-            })
-                .done(function (a) {
-                    stuff = a;
-                    if (getQueryVariable('code', stuff) == "0") { //If response is valid, show next screen and get info
-                        if ($('#rm').is(':checked')) {
-                            setCookie('rmUn', storeUn, 30);
-                            setCookie('rmPw', storePw, 30);
-                        }
-                        $('.s-name').text(getQueryVariable('retreivedusername', stuff));
-                        refreshSkins(); //Refresh skinslot data
-                        $('#button').slideUp();
-                        $('#' + $('#button').data('next')).slideDown();
-                    } else { errout('Invalid login details/a network error occured.'); } //Show error when nessicary
-                })
-                .fail(function (e) { errout('Network error while connecting to bonk.io.'); }); //Error fallback
+                $('.s-name').text(getQueryVariable('retreivedusername', stuff));
+                refreshSkins(); //Refresh skinslot data
+                $('#button').slideUp();
+                $('#' + $('#button').data('next')).slideDown();
+            } else { errout('Invalid login details/a network error occured.'); } //Show error when nessicary
+        })
+            .fail(function (e) { errout('Network error while connecting to bonk.io.'); }); //Error fallback
 
-        } else { errout('The username/password box is blank.'); } //Show error when nessicary
+        //} else { errout('The username/password box is blank.'); } //Show error when nessicary
     }
 });
 
