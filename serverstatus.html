@@ -4,6 +4,7 @@ desc: 'Bonk.io down? Check the bonk.io server status here.'
 canonical: 'https://bonkleagues.github.io/serverstatus.html'
 sel: ''
 scriptToUse: 'statusscript'
+specialAds: 'on'
 ---
 <style>
     .cgr{
@@ -40,30 +41,64 @@ scriptToUse: 'statusscript'
             box-shadow: 0px 0px 5px 0px #fb016e;
         }
     }
+    #leftBan{
+        position:absolute;
+        top:155px;
+        left:10px;
+    }
+    #rightBan{
+        position:absolute;
+        top:155px;
+        right:10px;
+    }
+    #pageCont{
+        margin:0px 180px;
+    }
+    @media screen and (max-width: 935px) {
+        #leftBan, #rightBan{
+            display:none;
+        }
+        #pageCont{
+            margin:0;
+        }
+    }
 </style>
-<span class="parthead">Bonk.io Server Status</span><br/><br/>
+<div id="leftBan">
+    <!-- Bonk Leagues left banner -->
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-8362785424135480" data-ad-slot="2620374158"></ins>
+    <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+</div>
 
-<span style="font-size:24px;">Bonk.io is currently <span id="overallStatusBN">...</span></span><br/><br/>
+<div id="rightBan">
+    <!-- Bonk Leagues right banner -->
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-8362785424135480" data-ad-slot="5451740996"></ins>
+    <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+</div>
 
-<b>Website - </b><span id="statusBN-web">...</span><br/>
-<b>Database - </b><span id="statusBN-db">...</span>
+<div id="pageCont">
+    <span class="parthead">Bonk.io Server Status</span><br/><br/>
 
-<br/>
+    <span style="font-size:24px;">Bonk.io is currently <span id="overallStatusBN">...</span></span><br/><br/>
 
-<!--<i id="downholder" style="display:none;"><br/>Bonk.io has been down for <span id="downtime" style="font-weight:bold">...</span>.</i>-->
+    <b>Website - </b><span id="statusBN-web">...</span><br/>
+    <b>Database - </b><span id="statusBN-db">...</span>
 
-<br/><br/><hr/><br/><br/>
+    <br/>
 
-<span class="parthead">Bonk Leagues Server Status</span><br/><br/>
+    <!--<i id="downholder" style="display:none;"><br/>Bonk.io has been down for <span id="downtime" style="font-weight:bold">...</span>.</i>-->
 
-<b>Bonk Leagues Backend - </b><span id="overallStatusBL">...</span>
-<br/><i id="extrainfo" style="display:none;font-size:12px;color:red;"><br/>Note: Could not connect to the Bonk Leagues server backend, this may mean the<br/>Skin Manager, XP checker and other BL services will not work correctly for now. Sorry :/<br/></i><br/>
+    <br/><br/><hr/><br/><br/>
 
-<div style="display:none;background:#222;max-width:700px;margin:0 auto;text-align:left;padding:10px 15px;" id="devDetails"><pre style="margin:0;padding:0;overflow:auto;padding-bottom:5px;font-size:14px" id="devOutput">...</pre></div>
-<button class="button" id="devBtn" style="font-size:20px;padding:5px 10px;animation:none;margin-top:15px;">Toggle dev details</button>
+    <span class="parthead">Bonk Leagues Server Status</span><br/><br/>
 
-<br/><br/><br/>
-<i style="font-size:12px;">Note: this page auto-updates every 40 seconds.</i><br/>
+    <b>Bonk Leagues Backend - </b><span id="overallStatusBL">...</span>
+    <br/><i id="extrainfo" style="display:none;font-size:12px;color:red;"><br/>Note: Could not connect to the Bonk Leagues server backend, this may mean the<br/>Skin Manager, XP checker and other BL services will not work correctly for now. Sorry :/<br/></i><br/>
 
-<div class="overlay toHide" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.7;"></div>
-<div class="loaderOverlay toHide" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)"><img src="/static/img/icons/loading.svg" class="spin" width="100"></div>
+    <div style="display:none;background:#222;max-width:700px;margin:0 auto;text-align:left;padding:10px 15px;" id="devDetails"><pre style="margin:0;padding:0;overflow:auto;padding-bottom:5px;font-size:14px" id="devOutput">...</pre></div>
+    <button class="button" id="devBtn" style="font-size:20px;padding:5px 10px;animation:none;margin-top:15px;">Toggle dev details</button>
+
+    <br/><br/><br/>
+    <i style="font-size:12px;">Note: this page auto-updates every 40 seconds.</i><br/>
+
+    <div class="overlay toHide" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.7;"></div>
+    <div class="loaderOverlay toHide" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)"><img src="/static/img/icons/loading.svg" class="spin" width="100"></div>

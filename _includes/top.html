@@ -12,10 +12,10 @@
         <link rel="canonical" href="{{ page.canonical }}" />
         <meta property="og:url" content="{{ page.canonical }}" />
         <meta property="og:site_name" content="Bonk Leagues" />
-        <meta property="og:image" content="https://bonkleagues.github.io/static/img/logo.png" />
+        <meta property="og:image" content="https://bonkleagues.github.io/static/img/logo_1000px.png" />
         <meta name="theme-color" content="#fb016e">
 
-        <link rel="icon" type="image/png" href="/static/img/logo.png">
+        <link rel="icon" type="image/png" href="/static/img/editor-logo.png">
         <link rel='stylesheet' type='text/css' href='/static/css/{{ page.styleToUse }}.css#33'>
 
         {% if page.sel == 'skins' %}
@@ -73,8 +73,8 @@
             <nav>
                 <!--<a{% if page.sel == 'home' %} class="sel"{% endif %} href="/index.html">Home</a>-->
                 <!--<a{% if page.sel == 'client' %} class="sel"{% endif %} href="/client.html">Client</a>-->
-                <a{% if page.sel == 'editor' %} class="sel"{% endif %} href="/editor.html">Skin Editor</a>
                 <a{% if page.sel == 'skins' %} class="sel"{% endif %} href="/skins.html">Skin Manager</a>
+                <a{% if page.sel == 'editor' %} class="sel"{% endif %} href="/editor.html">Skin Editor</a>
                 <span id="more">More &#9660;
                     <div class="moredd">
                         <a href="/xpchecker.html">XP Checker</a><br/>
@@ -88,8 +88,8 @@
         </header>
         <section>
             <!--
-                <span style="position:absolute;top:0;left:0;width:100%;background:red;color:#111;"><b>Important: </b>Bonk Leagues is currently having a major server outage and most tools (Skin Manager, Skin Editor, etc.) will not function properly! Please bear with us as we try to fix this.<br/>We will keep you updated in the Bonk Leagues Discord server.</span>
-            -->
-            <!-- good notice?
-                <span style="position:absolute;top:0;left:0;width:100%;color:rgb(132, 187, 60);"><b>Servers are back! </b>Our servers are back for now, they may be a little slower than usual. Sorry for the long downtime! (it wasn't our fault) &macr;\_(ツ)_/&macr;</span>
+            <div class="downNote" style="background:#fb016e;color:#111;padding:4px 8px;margin-bottom:18px">
+                <p><b>Bonk.io has been updated!</b></p>
+                <p><b>Most Bonk Leagues tools are currently down</b> and not working as we update our code to work with the new version! Please be patient, this may take a while. You can keep updated in our Discord server!</p>
+            </div>
             -->

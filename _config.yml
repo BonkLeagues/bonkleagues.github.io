@@ -9,3 +9,4 @@ defaults:
       sel: 'home'
       scriptToUse: 'script'
       styleToUse: 'style'
+      specialAds: 'off'

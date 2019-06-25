@@ -26,10 +26,10 @@ $.ajax({
         setState('statusBN-db','online');
         setState('overallStatusBL','online');
     } else {
-        setState('overallStatusBN','online');
-        setState('statusBN-web','online');
-        setState('statusBN-db','online');
-        setState('overallStatusBL','down');
+        setState('overallStatusBN','down');
+        setState('statusBN-web','down');
+        setState('statusBN-db','down');
+        setState('overallStatusBL','online');
         /*if(lastoutage){
             $('#downholder').show();
             $('#downtime').text(lastoutage);

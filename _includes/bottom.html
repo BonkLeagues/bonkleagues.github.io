@@ -17,6 +17,7 @@
                 <img src="/static/img/editor-logo.png" width="32"><br/>
                 <span style="font-size:10px;">
                     Bonk Leagues is in no way affiliated with bonk.io, multiplayer.gg or Chaz, but is simply a fan-made tool website.<br/>
+                    <span style="font-size:13px;">Contact us: <b><a href="mailto:hi@bonkleagues.io" target="_blank">hi@bonkleagues.io</a></b></span><br/>-<br/>
                     Our website uses cookies to enhance user experience and are required for most of the website to function. By using Bonk Leagues, you agree to the use of cookies.<br/>
                     <a href="https://bonk.io">Play bonk.io</a> &bull; <a href="/static/data/privacy_policy.html" target="_blank">Privacy &amp; Cookie Policy</a>
                 </span>
@@ -26,7 +27,7 @@
             <div class="remodal remodaldiscord" data-remodal-id="remodaldiscord">
                 <button data-remodal-action="close" class="remodal-close"></button>
                 <h1 class="parthead">Join our Discord server!</h1>
-                <p>Chat with 4,000+ others in the official Bonk Leagues Discord server!</p>
+                <p>Chat with 5,000+ others in the official Bonk Leagues Discord server!</p>
                 <p>The biggest Bonk.io-related Discord. Join today.</p>
                 <br/>
                 <button data-remodal-action="confirm" onclick="window.open('https://discord.gg/RadQ7xx', '_blank');" class="remodal-confirm button">Join!</button>
@@ -55,6 +56,11 @@
             </div>
             -->
         </section>
+
+        {% if page.specialAds == 'on' %}
+        </div>
+        {% endif %}
+
         <script src="/static/js/jquery.min.js"></script>
         <script src="/static/js/bab.js"></script>
         <script src="/static/js/blockdetect.js"></script>
@@ -64,9 +70,8 @@
         <script src="/static/js/jscolor.min.js"></script>
         <script src="/static/js/tag-it.min.js"></script>
         <script src="/static/js/skineditor.js#21"></script>
-        </div>
         {% endif %}
-        <script src="/static/js/{{ page.scriptToUse }}.js#45"></script>
+        <script src="/static/js/{{ page.scriptToUse }}.js#47"></script>
         <script src="/static/js/remodal.js"></script>
         <script>
             setTimeout(function(){
