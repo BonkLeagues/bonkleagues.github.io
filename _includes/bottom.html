@@ -122,5 +122,20 @@
                 document.cookie = name+'=; Max-Age=-99999999;';  
             }
         </script>
+
+        <!-- chrsitmas -->
+        <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
+        <script>
+            var sf = new Snowflakes({
+                color: '#fff',
+                container: document.querySelector('header'),
+                count: 50,
+                minOpacity: 0,
+                maxOpacity: 1,
+                minSize: 1,
+                maxSize: 8
+            });
+        </script>
+        <style>.snowflakes { position: absolute; top: 0; left: 0; width: 100%; height: 255px; overflow: hidden } </style>
     </body>
 </html>
