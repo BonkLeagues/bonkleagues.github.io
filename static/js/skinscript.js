@@ -372,7 +372,7 @@ function doRmLogin(nextLoc) {
                 $('#button').slideUp();
                 $('#' + nextLoc).slideDown();
 
-                gtag('event', 'login', { method : 'Remember me' });
+                gtag('event', 'login', { method: 'Remember me' });
             } else { errout('Failed to login with \'Remember Me\' data, please login manually.'); } //Show error when nessicary
         })
         .fail(function (e) { errout('Failed to login with \'Remember Me\' data, please login manually.'); }); //Error fallback
@@ -524,56 +524,22 @@ $(document).on("click", ".share-btn", function () {
     $('#shareskin').slideDown();
     $('#genlink').text('loading...');
 
-    $.ajax({ //Use Bit.ly API to generate a link
-        type: "GET",
-        url: "https://api-ssl.bitly.com/v3/shorten",
-        dataType: "json",
-        data: {
-            longUrl: `https://bonkleagues.github.io/skins.html#${encodeURIComponent(skntoUse.name)}|${tmpname}|${encodeURIComponent(skntoUse.avatar)}`,
-            login: 'finbae',
-            apiKey: 'R_5373fb46400847f6887462e6cfb9585c'
-        }
-    }).done(function (meme) {
-        var tmpname = encodeURIComponent(getQueryVariable('retreivedusername', stuff));
-        if (skntoUse.cred) {
-            tmpname = encodeURIComponent(skntoUse.cred);
-        }
-        $.ajax({ //Use Bit.ly API to shorten the URL used to add skins
-            type: "GET",
-            url: "https://api-ssl.bitly.com/v3/shorten",
-            dataType: "json",
-            data: {
-                longUrl: `https://bonkleagues.github.io/skins.html#${encodeURIComponent(skntoUse.name)}|${tmpname}|${encodeURIComponent(skntoUse.avatar)}`,
-                login: 'finbae',
-                apiKey: 'R_5373fb46400847f6887462e6cfb9585c'
-            }
-        }).done(function (meme) {
-            if (meme.status_code == 200) {
-                $('#genlink').html('<span style="font-size:14px;font-weight:bold;">To share this skin, copy & paste this link to a friend:</span><br/><br/><span style="color:#fb016e;font-weight:bold">' + meme.data.url + '</span>');
+    var tmpname = encodeURIComponent(getQueryVariable('retreivedusername', stuff));
+    if (skntoUse.cred) {
+        tmpname = encodeURIComponent(skntoUse.cred);
+    }
 
-                $.ajax({ //Use Bit.ly API to get link stats
-                    type: "GET",
-                    url: "https://api-ssl.bitly.com/v3/link/clicks",
-                    dataType: "json",
-                    data: {
-                        link: meme.data.url,
-                        access_token: 'cacbc15fe501e785cbefbf5e4ebd9ac2741e3b7a'
-                    }
-                }).done(function (meme2) {
-                    if (meme2.status_code == 200) {
-                        $('#genstatscount').text(meme2.data.link_clicks);
-                        $('#genstats').fadeIn();
-                    }
-                    console.log(meme2);
-                });
-            } else { //Otherwise show error
-                statusout('There was an error getting the skin sharing link. Sorry :/');
-            }
-            console.log(meme);
-        })
-            .fail(function (e) {
-                statusout('There was an error getting the skin sharing link. Sorry :/');
-            });
+    $.ajax({ //Use Bit.ly API to shorten the URL used to add skins
+        type: "GET",
+        url: "https://bonkleaguebot.herokuapp.com/shorten",
+        dataType: "json",
+        data: { url: `https://bonkleagues.github.io/skins.html#${encodeURIComponent(skntoUse.name)}|${tmpname}|${encodeURIComponent(skntoUse.avatar)}` }
+    }).done(function (meme) {
+        $('#genlink').html('<span style="font-size:14px;font-weight:bold;">To share this skin, copy & paste this link to a friend:</span><br/><br/><span style="color:#fb016e;font-weight:bold">' + meme.url + '</span>');
+        $('#genstatscount').text(meme.clicks);
+        $('#genstats').fadeIn();
+    }).fail(function (e) {
+        statusout('There was an error getting the skin sharing link. Sorry :/');
     });
 });
 
@@ -709,8 +675,8 @@ $('#exportbtn').click(function () {
     statusout('Backed-up successfully! Downloading file...');
 
     gtag('event', 'skin_export', {
-        'event_category' : 'engagement',
-        'event_label' : 'Skins exported'
+        'event_category': 'engagement',
+        'event_label': 'Skins exported'
     });
 });
 
@@ -750,8 +716,8 @@ $("#importpicker").change(function (e) {
                 statusout(uploadDataToAdd.length + ' skins imported successfully!');
 
                 gtag('event', 'skin_import', {
-                    'event_category' : 'engagement',
-                    'event_label' : 'Skins imported'
+                    'event_category': 'engagement',
+                    'event_label': 'Skins imported'
                 });
             } else { fileUploadFail(); }
         };
@@ -807,8 +773,8 @@ $('#edskin').click(function () {
     $('#loggedin').slideDown();
 
     gtag('event', 'skin_edit', {
-        'event_category' : 'engagement',
-        'event_label' : 'Skin edited'
+        'event_category': 'engagement',
+        'event_label': 'Skin edited'
     });
 });
 
@@ -823,8 +789,8 @@ $('#delskin').click(function () {
         showExitModal = false;
 
         gtag('event', 'skin_delete', {
-            'event_category' : 'engagement',
-            'event_label' : 'Skin deleted'
+            'event_category': 'engagement',
+            'event_label': 'Skin deleted'
         });
     }
 });
@@ -889,8 +855,8 @@ $('#svskin').click(function () {
     $('#loggedin').slideDown();
 
     gtag('event', 'skin_add', {
-        'event_category' : 'engagement',
-        'event_label' : 'Skin added'
+        'event_category': 'engagement',
+        'event_label': 'Skin added'
     });
 
     setTimeout(function () { $('#svskin').show() }, 1000); //Make sure animation completes before enabling save button again
@@ -899,7 +865,7 @@ $('#svskin').click(function () {
 //When the cancel button is clicked on any page with a cancel button
 $('.cancel').click(function () {
     $('#' + $(this).data('cancel')).slideUp(); //Close appropriate page
-    if($(this).data('open')){
+    if ($(this).data('open')) {
         $('#' + $(this).data('open')).slideDown();
     } else {
         $('#loggedin').slideDown();
@@ -964,7 +930,7 @@ $('#button').click(function () {
                 $('#button').slideUp();
                 $('#' + $('#button').data('next')).slideDown();
 
-                gtag('event', 'login', { method : 'Login button' });
+                gtag('event', 'login', { method: 'Login button' });
             } else { errout('Invalid login details/a network error occured.'); } //Show error when nessicary
         })
             .fail(function (e) { errout('Network error while connecting to bonk.io.'); }); //Error fallback
