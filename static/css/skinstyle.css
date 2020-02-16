@@ -93,6 +93,7 @@ section{
     text-align:center;
     font-size:18px;
     padding:0 20px;
+    padding-top:52px;
     padding-bottom:50px;
 }
 section a, #cusa{
@@ -213,9 +214,9 @@ input:-webkit-autofill {
 }
 #leftBan{
     position:absolute;
-    top:0px;
-    left:0px;
-	max-width: 160px;
+    top:35px;
+    left:10px;
+	max-width: 205px;
     width: 100%;
     max-height: 1500px;
     height: 100%;
@@ -223,8 +224,8 @@ input:-webkit-autofill {
 #rightBan{
     position:absolute;
     top:35px;
-    right:0px;
-	max-width: 160px;
+    right:10px;
+	max-width: 205px;
     width: 100%;
     max-height: 1500px;
     height: 100%;
