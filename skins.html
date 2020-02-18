@@ -8,6 +8,10 @@ scriptToUse: 'skinscript'
 styleToUse: 'skinstyle'
 specialAds: 'on'
 ---
+<div id="applixir_vanishing_div" hidden>
+    <iframe id="applixir_parent" allow="autoplay, fullscreen"></iframe>
+</div>
+
 <div id="leftBan">
     <!-- Bonk Leagues left banner -->
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8362785424135480" data-ad-slot="2620374158" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -200,3 +204,18 @@ specialAds: 'on'
 
     <div id="statusbar"></div>
     <div id="overlay"></div>
+
+    <script>
+        var options = {
+            zoneId: 2849,
+            adStatusCb: function (status) {
+                console.log(status);
+            }
+        };
+
+        function showVid() {
+            invokeApplixirVideoUnit(options);
+        }
+    </script>
+
+    <script type='text/javascript' src="https://cdn.applixir.com/applixir.sdk3.0m.js"></script>
