@@ -776,8 +776,6 @@ $('#edskin').click(function () {
         'event_category': 'engagement',
         'event_label': 'Skin edited'
     });
-
-    cpmstarAPI({ kind:"game.displayInterstitial" });
 });
 
 //When the delete button on the edit skin page is clicked
@@ -861,8 +859,6 @@ $('#svskin').click(function () {
         'event_label': 'Skin added'
     });
 
-    cpmstarAPI({ kind:"game.displayInterstitial" });
-
     setTimeout(function () { $('#svskin').show() }, 1000); //Make sure animation completes before enabling save button again
 });
 
@@ -874,8 +870,6 @@ $('.cancel').click(function () {
     } else {
         $('#loggedin').slideDown();
     }
-
-    cpmstarAPI({ kind:"game.displayInterstitial" });
 });
 
 //Drag-and-drop skin slot functionality for the logged in page
