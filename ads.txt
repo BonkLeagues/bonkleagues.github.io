@@ -1,1 +1,34 @@
+#Adsense
 google.com, pub-8362785424135480, DIRECT, f08c47fec0942fa0
+#Adplayer.pro
+AdPlayer.Pro, 1, DIRECT
+Adsolut.in, 44516, DIRECT #Playstream
+google.com, pub-7002491002409919, DIRECT, f08c47fec0942fa0
+google.com, pub-9378724246417115, RESELLER, f08c47fec0942fa0
+google.com, pub-2506150943914125, RESELLER, f08c47fec0942fa0
+google.com, pub-3452022011371122, RESELLER, f08c47fec0942fa0
+google.com, pub-6968738577620513, RESELLER, f08c47fec0942fa0
+aniview.com, 5db8634028a0616fc421adc8, DIRECT, 78b21b97965ec3f8
+aniview.com, 5d41fc6128a0614d6316234a, DIRECT, 78b21b97965ec3f8
+openx.com, 540862677, RESELLER, 6a698e2ec38604c6
+advertising.com, 23089, RESELLER
+districtm.io, 101661, DIRECT
+appnexus.com, 1908, RESELLER, f5ab79cb980f11d1
+google.com, pub-9685734445476814, RESELLER, f08c47fec0942fa0
+admixer.net, b81743f7-b474-4c19-8479-8697021abdd2, DIRECT
+google.com, pub-7002491002409919, DIRECT, f08c47fec0942fa0
+google.com, pub-7002491002409919, RESELLER, f08c47fec0942fa0
+google.com, pub-9378724246417115, DIRECT, f08c47fec0942fa0
+synacor.com,82171, DIRECT, e108f11b2cdf7d5b
+rubiconproject.com, 18222, RESELLER, 0bfd66d529a55807 # AOL - One
+pubmatic.com, 156344, RESELLER, 5d62403b186f2ace # Pubmatic
+rubiconproject.com, 13344, RESELLER, 0bfd66d529a55807 # Rubicon
+kubient.com,56f58bdd446e9,DIRECT,4f12311e6ed900a3
+yieldnexus.com, 96204, DIRECT
+audience.media, 100358, DIRECT
+appnexus.com, 10617, RESELLER
+appnexus.com, 9393, RESELLER
+advertising.com, 25034, RESELLER
+sonobi.com, 783272317b, RESELLER, d1a215d9eb5aee9e
+spotxchange.com, 85519, RESELLER
+indexexchange.com, 186684, RESELLER

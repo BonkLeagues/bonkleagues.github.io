@@ -114,6 +114,32 @@ function outputCorruptSkins() { //Output corrupt skin data error message
     $('#loggedin').html('Oops, it seems like your saved skin data has been corrupted.<br/><br/>Try reloading the page or contacting us in our support server, and we\'ll try lend a hand.<br/><br/>Or, if the issue still isn\'t fixed, <br/><a class="deleteallbtn" style="text-decoration:underline;cursor:pointer">reset your skin data here</a> to fix it entirely.');
 }
 
+function showVid() {
+    var s = document.querySelector('script[data-playerPro="current"]');
+    (playerPro = window.playerPro || []).push({
+        id: "zalxl3oVclN9gMM1gqck7injlzJWjMw5zJRJkRTW621US4bVqCmZ", after: s, init: function (api) {
+            if (api) {
+                /*
+                api.on('AdVideoFirstQuartile', function () {
+                    if (api.getAdSkippableState()) {
+                        $("#skipButton").unbind();
+                        $("#skipButton").show();
+                        $("#skipButton").click(function() {
+                            console.log(api.getAdSkippableState());
+                            api.skipAd();
+                        });
+                    }
+                });
+
+                api.on('AdStopped', function () {
+                    $("#skipButton").unbind();
+                    $("#skipButton").hide();
+                });*/
+            }
+        }
+    });
+}
+
 Array.prototype.move = function (from, to) {
     this.splice(to, 0, this.splice(from, 1)[0]);
 };
@@ -373,6 +399,8 @@ function doRmLogin(nextLoc) {
                 $('#' + nextLoc).slideDown();
 
                 gtag('event', 'login', { method: 'Remember me' });
+
+                showVid();
             } else { errout('Failed to login with \'Remember Me\' data, please login manually.'); } //Show error when nessicary
         })
         .fail(function (e) { errout('Failed to login with \'Remember Me\' data, please login manually.'); }); //Error fallback
@@ -776,6 +804,8 @@ $('#edskin').click(function () {
         'event_category': 'engagement',
         'event_label': 'Skin edited'
     });
+
+    showVid();
 });
 
 //When the delete button on the edit skin page is clicked
@@ -792,6 +822,8 @@ $('#delskin').click(function () {
             'event_category': 'engagement',
             'event_label': 'Skin deleted'
         });
+
+        showVid();
     }
 });
 
@@ -859,6 +891,8 @@ $('#svskin').click(function () {
         'event_label': 'Skin added'
     });
 
+    showVid();
+
     setTimeout(function () { $('#svskin').show() }, 1000); //Make sure animation completes before enabling save button again
 });
 
@@ -870,6 +904,8 @@ $('.cancel').click(function () {
     } else {
         $('#loggedin').slideDown();
     }
+
+    showVid();
 });
 
 //Drag-and-drop skin slot functionality for the logged in page
@@ -931,6 +967,8 @@ $('#button').click(function () {
                 $('#' + $('#button').data('next')).slideDown();
 
                 gtag('event', 'login', { method: 'Login button' });
+
+                showVid();
             } else { errout('Invalid login details/a network error occured.'); } //Show error when nessicary
         })
             .fail(function (e) { errout('Network error while connecting to bonk.io.'); }); //Error fallback
