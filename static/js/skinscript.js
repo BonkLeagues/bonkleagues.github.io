@@ -119,6 +119,8 @@ function showVid() {
     (playerPro = window.playerPro || []).push({
         id: "zalxl3oVclN9gMM1gqck7injlzJWjMw5zJRJkRTW621US4bVqCmZ", after: s, init: function (api) {
             if (api) {
+                console.log(api);
+                if (window.testThing) api.resizeAd(800, 450);
                 /*
                 api.on('AdVideoFirstQuartile', function () {
                     if (api.getAdSkippableState()) {
