@@ -15,10 +15,12 @@ function showVid() {
     (playerPro = window.playerPro || []).push({
         id: "zalxl3oVclN9gMM1gqck7injlzJWjMw5zJRJkRTW621US4bVqCmZ", after: s, init: function (api) {
             if (api) {
-                console.log(api);
+                api.on('AdError', function(m, e) {
+                    cpmstarAPI({ kind:"game.displayInterstitial" });
+                });
             }
         }
     });
 }
 
-setInterval(showVid, 150000); //2.5 mins
+setInterval(showVid, 90000);

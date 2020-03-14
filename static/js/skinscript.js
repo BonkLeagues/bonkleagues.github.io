@@ -119,9 +119,8 @@ function showVid() {
     (playerPro = window.playerPro || []).push({
         id: "zalxl3oVclN9gMM1gqck7injlzJWjMw5zJRJkRTW621US4bVqCmZ", after: s, init: function (api) {
             if (api) {
-                console.log(api);
                 api.on('AdError', function(m, e) {
-                    console.log('err');
+                    cpmstarAPI({ kind:"game.displayInterstitial" });
                 });
             }
         }
