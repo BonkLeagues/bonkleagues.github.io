@@ -115,6 +115,8 @@ function outputCorruptSkins() { //Output corrupt skin data error message
 }
 
 function showVid() {
+    cpmstarAPI({ kind:"game.displayInterstitial" });
+    /*
     var s = document.querySelector('script[data-playerPro="current"]');
     (playerPro = window.playerPro || []).push({
         id: "zalxl3oVclN9gMM1gqck7injlzJWjMw5zJRJkRTW621US4bVqCmZ", after: s, init: function (api) {
@@ -124,7 +126,7 @@ function showVid() {
                 });
             }
         }
-    });
+    });*/
 }
 
 Array.prototype.move = function (from, to) {
