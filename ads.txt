@@ -306,5 +306,7 @@ spotx.tv, 173177, DIRECT
 spotxchange.com, 173177, DIRECT
 spotxchange.com, 173175, DIRECT
 
+adtech.com, 11095, RESELLER
+openx.com, 537145117, RESELLER, 6a698e2ec38604c6
 
 ##### CPMSTAR_END #####
