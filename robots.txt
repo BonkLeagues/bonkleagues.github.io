@@ -1,5 +1,3 @@
 User-agent: *
 Disallow: /404.html
-Disallow: /comingsoon.html
-Disallow: /editorframe.html
-Disallow: /screensaver.html
+Disallow: /export.html

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bonk Leagues - Export Tool</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 10px 30px;
+            background: #111;
+            color: #ccc;
+            font-size: 16px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #333;
+            margin: 40px 0px;
+        }
+
+        h1, h3 {
+            color: #fb016e;
+        }
+
+        #out {
+            font-size: 18px;
+            color: #fb016e;
+            font-weight: bold;
+        }
+
+        button {
+            display: none;
+            color: #111;
+            background: #fb016e;
+            border: none;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 22px;
+            margin-left: 20px;
+            padding: 6px 16px;
+            cursor: pointer;
+        }
+
+        #steps {
+            margin-top: 40px;
+            display: none;
+        }
+
+        li {
+            margin: 10px 0px;
+        }
+
+        a {
+            color: #fb016e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Move your skins from the old Bonk Leagues</h1>
+    <p>Bonk Leagues recently moved from <b>bonkleagues.github.io</b> to <b>bonkleagues.io</b></p>
+    <p>Because of this, you might be missing your saved skins from the Skin Manager. Use this tool to recover them!</p>
+    <hr>
+    <p id="out">> An error occurred when trying to find your skins.</p>
+    <button id="recover" onclick="recover()">Recover Skins</button>
+    <div id="steps">
+        <h3>Follow these steps to recover your skins:</h3>
+        <ol>
+            <li>Click the big pink <b>"Recover Skins"</b> button above and save the file somewhere</li>
+            <li>Go back into Bonk Leagues Skin Manager by clicking <a href="https://bonkleagues.io/skins.html" target="_blank">here</a></li>
+            <li>Log in. At the bottom of the page, you should see a button saying <b>"BACKUP SKINS"</b></li>
+            <li>Click the <b>"BACKUP SKINS"</b> button, then click <b>"IMPORT SKINS FROM A FILE"</b></li>
+            <li>Find the file you downloaded earlier and <b>upload it</b></li>
+            <li>Done!</li>
+        </ol>
+    </div>
+</body>
+
+<script>
+    var skins = localStorage.getItem('skindata');
+    var output = '> No skins found.';
+
+    if (skins) {
+        skins = JSON.parse(skins);
+        output = `> ${skins.length} skins found.`;
+        document.getElementById('recover').style.display = "block";
+        document.getElementById('steps').style.display = "block";
+    }
+
+    document.getElementById('out').textContent = output;
+
+    function recover() {
+        var d = new Date();
+        download(JSON.stringify(skins), d.toDateString() + ' Backup.blsm', 'text/plain');
+    }
+
+    function download(content, fileName, contentType) {
+        var a = document.createElement("a");
+        a.setAttribute("type", "hidden");
+        var file = new Blob([content], { type: contentType });
+        a.href = URL.createObjectURL(file);
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    }
+</script>
+
+</html>
